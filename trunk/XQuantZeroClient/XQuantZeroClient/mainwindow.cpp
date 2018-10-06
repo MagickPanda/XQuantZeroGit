@@ -6,14 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    uiConsole = new CConsoleForm();
-
-    uiConsole->show();
 }
 
 MainWindow::~MainWindow()
 {
-    delete uiConsole;
     delete ui;
 }

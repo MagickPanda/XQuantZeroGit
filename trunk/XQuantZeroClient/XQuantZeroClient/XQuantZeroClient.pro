@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-09-24T17:57:25
+# Project created by QtCreator 2018-10-05T23:30:16
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = XQuantZero
+TARGET = XQuantZeroClient
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,34 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    CBaseTrader.cpp \
-    CCTPProxy.cpp \
-    cfgutil.cpp \
-    swbase.cpp \
-    CTrader.cpp \
-    CQuoter.cpp \
-    cconsoleform.cpp \
-    clogindialog.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    swbase.h \
-    CBaseTrader.h \
-    CCTPProxy.h \
-    CTraderRsp.h \
-    CTraderMD.h \
-    cfgutil.h \
-    CQuery.h \
-    STDLL.h \
-    CQuoter.h \
-    CTrader.h \
-    cconsoleform.h \
-    clogindialog.h
+        mainwindow.h
 
 FORMS += \
-        mainwindow.ui \
-    cconsoleform.ui \
-    clogindialog.ui
-
-INCLUDEPATH += C:/dev_package/ctp/win32/
+        mainwindow.ui

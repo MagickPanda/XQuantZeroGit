@@ -2,8 +2,8 @@
 class CBaseTrader
 {
 public:
-        virtual void CBaseTrader();
-        virtual void ~CBaseTrader();
+        CBaseTrader();
+        virtual ~CBaseTrader();
 
     /*
     int login(void);

@@ -6,9 +6,12 @@ CConsoleForm::CConsoleForm(QWidget *parent) :
     ui(new Ui::CConsoleForm)
 {
     ui->setupUi(this);
+
+    ui->label->setText("Fuck you");
 }
 
 CConsoleForm::~CConsoleForm()
 {
     delete ui;
 }
+
