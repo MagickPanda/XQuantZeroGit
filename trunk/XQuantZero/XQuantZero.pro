@@ -22,6 +22,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# uses C++ 11 features
+CONFIG += c++11
+
 
 SOURCES += \
         main.cpp \
@@ -33,7 +36,8 @@ SOURCES += \
     CTrader.cpp \
     CQuoter.cpp \
     cconsoleform.cpp \
-    clogindialog.cpp
+    clogindialog.cpp \
+    cconfighandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,11 +52,13 @@ HEADERS += \
     CQuoter.h \
     CTrader.h \
     cconsoleform.h \
-    clogindialog.h
+    clogindialog.h \
+    cconfighandler.h
 
 FORMS += \
         mainwindow.ui \
     cconsoleform.ui \
     clogindialog.ui
 
+# this must be your path of ctp headers
 INCLUDEPATH += C:/dev_package/ctp/win32/

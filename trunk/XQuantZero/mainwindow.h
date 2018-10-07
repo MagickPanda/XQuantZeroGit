@@ -18,13 +18,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    static const MainWindow* getInstance()
+    static MainWindow &getSingleton()
     {
+        static MainWindow m_Instance;
         return m_Instance;
     }
 
 private:
-   static const MainWindow *m_Instance;
+
 
     Ui::MainWindow *ui;
 
