@@ -15,6 +15,8 @@
 #include "STDLL.h"
 #include "swbase.h"
 
+#include "qobject.h"
+
 using namespace std;
 
 //HANDLE  g_hEvent;

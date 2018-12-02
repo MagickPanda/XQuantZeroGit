@@ -29,29 +29,41 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
+  <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>361</width>
-     <height>91</height>
+     <x>50</x>
+     <y>30</y>
+     <width>301</width>
+     <height>41</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_passwordd">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>密码</string>
+       <string>登录</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QLineEdit" name="tb_password"/>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="comboBox"/>
     </item>
-    <item row="1" column="0">
-     <widget class="QLineEdit" name="tb_username"/>
-    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>351</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_2">
+    <property name="verticalSpacing">
+     <number>16</number>
+    </property>
     <item row="0" column="0">
      <widget class="QLabel" name="label_username">
       <property name="text">
@@ -59,30 +71,20 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="tb_username"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="tb_password"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_passwordd">
+      <property name="text">
+       <string>密码</string>
+      </property>
+     </widget>
+    </item>
    </layout>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>10</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>登录</string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="list_server">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>50</y>
-     <width>256</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>

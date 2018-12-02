@@ -1,13 +1,14 @@
-#pragma once
+#ifndef CTRADERPROXY_H
+#define CTRADERPROXY_H
 
-#include "ctrader.h"
-#include "ctraderproxy.h"
+#include "ThostFtdcTraderApi.h"
+#include <string>
 
-class CCTPProxy : public CTraderProxy
+using namespace std;
+
+class CTraderProxy
 {
 public:
-    CCTPProxy(CTrader trader) : mTrader(trader) {}
-
     virtual int login(void);
     virtual int logout(void);
     virtual int queryHold(void);
@@ -25,8 +26,6 @@ public:
     virtual int qryTradingAccount();
     virtual void settleConfirm(void);
 
-
-private:
-    CTrader mTrader;
 };
 
+#endif // CTRADERPROXY_H

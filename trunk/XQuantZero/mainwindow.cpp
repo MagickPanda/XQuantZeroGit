@@ -10,10 +10,19 @@ MainWindow::MainWindow(QWidget *parent) :
     uiConsole = new CConsoleForm();
 
     uiConsole->show();
+
+    //trader = new CTrader();
+   // quoter = new CQuoter();
 }
 
 MainWindow::~MainWindow()
 {
     delete uiConsole;
+    uiConsole = nullptr;
     delete ui;
+    ui = nullptr;
+    //delete trader;
+    //trader = nullptr;
+    //delete quoter;
+    //quoter = nullptr;
 }

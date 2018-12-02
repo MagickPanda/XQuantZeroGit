@@ -2,6 +2,9 @@
 #define CLOGINDIALOG_H
 
 #include <QDialog>
+#include <QComboBox>
+#include <QDebug>
+
 
 namespace Ui {
 class CLoginDialog;

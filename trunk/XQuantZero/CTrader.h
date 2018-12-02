@@ -15,6 +15,8 @@
 #include "STDLL.h"
 #include "swbase.h"
 
+#include "qobject.h"
+
 using namespace std;
 
 //HANDLE  g_hEvent;
@@ -107,14 +109,7 @@ public:
 		/*strcpy(LastOrderRef, "           1");*/
 	}
 
-	~CTrader()
-	{
-		//tradeApi->Join();
-		tradeApi->Release();
-		delete m_MsgList;
-		m_MsgList = NULL;
-
-	}
+//    ~CTrader();
 
 	void failIncRef() {
 		CurOrderRefInt++;

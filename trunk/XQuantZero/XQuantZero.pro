@@ -37,7 +37,9 @@ SOURCES += \
     CQuoter.cpp \
     cconsoleform.cpp \
     clogindialog.cpp \
-    cconfighandler.cpp
+    cconfighandler.cpp \
+    ceventproxy.cpp \
+    ctraderproxy.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -53,7 +55,9 @@ HEADERS += \
     CTrader.h \
     cconsoleform.h \
     clogindialog.h \
-    cconfighandler.h
+    cconfighandler.h \
+    ceventproxy.h \
+    ctraderproxy.h
 
 FORMS += \
         mainwindow.ui \

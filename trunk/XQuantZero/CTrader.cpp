@@ -7,6 +7,13 @@
 #endif
 #endif
 
+//CTrader::~CTrader() {
+//    //tradeApi->Join();
+//    tradeApi->Release();
+//    delete m_MsgList;
+//    m_MsgList = NULL;
+//}
+
 int CTrader::login() {
 	CThostFtdcReqUserLoginField loginField;
 	memset(&loginField, 0, sizeof(loginField));

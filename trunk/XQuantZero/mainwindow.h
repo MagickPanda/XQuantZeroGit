@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "cconsoleform.h"
 
+#include "CQuoter.h"
+#include "CTrader.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -25,11 +28,16 @@ public:
     }
 
 private:
+    CTrader *trader;
+    CQuoter *quoter;
 
 
     Ui::MainWindow *ui;
 
     CConsoleForm *uiConsole;
+
+private slots:
+
 };
 
 #endif // MAINWINDOW_H
