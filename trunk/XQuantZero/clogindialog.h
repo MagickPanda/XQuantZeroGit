@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QComboBox>
 #include <QDebug>
+#include <QAbstractButton>
 
 
 namespace Ui {
@@ -17,6 +18,9 @@ class CLoginDialog : public QDialog
 public:
     explicit CLoginDialog(QWidget *parent = 0);
     ~CLoginDialog();
+
+private slots:
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
     Ui::CLoginDialog *ui;

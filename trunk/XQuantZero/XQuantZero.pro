@@ -39,7 +39,10 @@ SOURCES += \
     clogindialog.cpp \
     cconfighandler.cpp \
     ceventproxy.cpp \
-    ctraderproxy.cpp
+    ctraderproxy.cpp \
+    ceventqueue.cpp \
+    cevent.cpp \
+    cctpevent.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -57,7 +60,10 @@ HEADERS += \
     clogindialog.h \
     cconfighandler.h \
     ceventproxy.h \
-    ctraderproxy.h
+    ctraderproxy.h \
+    ceventqueue.h \
+    cevent.h \
+    cctpevent.h
 
 FORMS += \
         mainwindow.ui \

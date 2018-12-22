@@ -9,9 +9,11 @@ public:
     CCTPProxy(CTrader trader) : mTrader(trader) {}
 
     virtual int login(void);
+
     virtual int logout(void);
     virtual int queryHold(void);
     virtual int queryPos(void);
+    /*
     virtual int queryDepthData(string instrumentID);
     virtual int insert(string instrumentID, int price, int volume, int code, int reqID);
     virtual int insert2(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef);
@@ -24,7 +26,7 @@ public:
 
     virtual int qryTradingAccount();
     virtual void settleConfirm(void);
-
+    */
 
 private:
     CTrader mTrader;

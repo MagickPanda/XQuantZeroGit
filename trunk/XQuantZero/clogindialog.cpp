@@ -12,3 +12,10 @@ CLoginDialog::~CLoginDialog()
 {
     delete ui;
 }
+
+void CLoginDialog::on_buttonBox_clicked(QAbstractButton *button)
+{
+    QString test = "meow";
+
+    printf("meow");
+}

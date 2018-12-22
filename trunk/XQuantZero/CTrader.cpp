@@ -130,6 +130,11 @@ int CTrader::queryPos() {
 	return iResult;
 }
 
+///TODO: ENG:add queryHold ## 中： 加入queryHold实体
+int CTrader::queryHold() {
+    return -1;
+}
+
 int  CTrader::insert(string instrumentID, int price, int volume, int code, int reqID)
 {
 	CThostFtdcInputOrderField inputOrder; //插入报单数据

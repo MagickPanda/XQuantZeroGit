@@ -1,12 +1,32 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QThread>
+#include <QTimer>
 
 #include "clogindialog.h"
 #include "cconfighandler.h"
 
+#include "ceventqueue.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    // test section for event queue ## 测试事件队列
+#if 1
+    QThread t;
+    QTimer timer;
+    CEventQueue eventQueue;
+
+    QObject::connect(&timer, SIGNAL(timeout()), &eventQueue, SLOT(OnProcess()));
+    timer.start(50);
+
+    eventQueue.moveToThread(&t);
+    t.start();
+
+
+#endif
+
 
     // test section for config loader ## 测试配置读取类
 #if 1

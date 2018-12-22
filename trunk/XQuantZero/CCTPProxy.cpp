@@ -1,12 +1,20 @@
 #include "CCTPProxy.h"
 
-virtual int CCTPProxy::login(void) {
+int CCTPProxy::login(void) {
     return mTrader.login();
 }
 
-//virtual int logout(void);
-//virtual int queryHold(void);
-//virtual int queryPos(void);
+int CCTPProxy::logout(void) {
+    return mTrader.logout();
+}
+
+int CCTPProxy::queryHold(void) {
+    return mTrader.queryHold();
+}
+
+int CCTPProxy::queryPos(void) {
+    return mTrader.queryPos();
+}
 //virtual int queryDepthData(string instrumentID);
 //virtual int insert(string instrumentID, int price, int volume, int code, int reqID);
 //virtual int insert2(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef);
