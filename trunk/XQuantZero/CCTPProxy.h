@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 
-#include "ctrader.h"
+#include "cctptrader.h"
 #include "ctraderproxy.h"
 
 class CCTPProxy : public CTraderProxy
 {
 public:
-    CCTPProxy(CTrader trader) : mTrader(trader) {}
+    CCTPProxy(CCTPTrader trader) : mTrader(trader) {}
 
     virtual int login(void);
 
@@ -29,6 +29,6 @@ public:
     */
 
 private:
-    CTrader mTrader;
+    CCTPTrader mTrader;
 };
 

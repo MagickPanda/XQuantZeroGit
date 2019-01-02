@@ -1,4 +1,4 @@
-#include "ceventproxy.h"
+﻿#include "ceventproxy.h"
 
 CEventProxy::CEventProxy()
 {

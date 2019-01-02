@@ -1,17 +1,17 @@
-#include "ceventqueue.h"
+ï»¿#include "ceventqueue.h"
 
 CEventQueue::CEventQueue() {
 
 }
 
-/// Push event into queue(not immediate process) ## ¶ÓÎ²²åÈëÊÂ¼ş£¨²»Á¢¼´´¦Àí£©
-void CEventQueue::pushEvent(CEvent &evt) {
-    m_Mutex.lock();
+/// Push event into queue(not immediate process) ## é˜Ÿå°¾æ’å…¥äº‹ä»¶ï¼ˆä¸ç«‹å³å¤„ç†ï¼‰
+void CEventQueue::pushEvent(CAbstractEvent &evt) {
+    m_PushMutex.lock();
     m_Queue.push_back(evt);
-    m_Mutex.unlock();
+    m_PushMutex.unlock();
 }
 
-/// Process an event in front ## ´¦ÀíÒ»¸ö¶ÓÊ×ÊÂ¼ş
+/// Process an event in front ## å¤„ç†ä¸€ä¸ªé˜Ÿé¦–äº‹ä»¶
 void CEventQueue::popEvent(void) {
 
 }

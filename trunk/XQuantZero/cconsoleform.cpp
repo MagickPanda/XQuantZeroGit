@@ -1,4 +1,4 @@
-#include "cconsoleform.h"
+﻿#include "cconsoleform.h"
 #include "ui_cconsoleform.h"
 
 CConsoleForm::CConsoleForm(QWidget *parent) :

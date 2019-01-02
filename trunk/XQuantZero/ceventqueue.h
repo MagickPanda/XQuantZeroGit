@@ -1,4 +1,4 @@
-#ifndef CEVENTQUEUE_H
+﻿#ifndef CEVENTQUEUE_H
 #define CEVENTQUEUE_H
 
 #include <QtCore>
@@ -6,6 +6,9 @@
 #include <QObject>
 
 #include "cevent.h"
+#include "cabstractevent.h"
+
+using namespace xq_event;
 
 class CEventQueue : public QObject
 {
@@ -19,7 +22,7 @@ public:
         return m_Instance;
     }
 
-    void pushEvent(CEvent &evt);
+    void pushEvent(CAbstractEvent &evt);
     void popEvent(void);
 
 private:
@@ -29,8 +32,8 @@ private slots:
 
     }
 
-    QQueue<CEvent> m_Queue;
-    QMutex m_Mutex;
+    QQueue<CAbstractEvent> m_Queue;
+    QMutex m_PushMutex;
 };
 
 #endif // CEVENTQUEUE_H

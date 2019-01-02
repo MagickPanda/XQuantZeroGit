@@ -1,26 +1,23 @@
-{
-    "ctp_server":
-    {
-        "trade_front":"180.168.146.187",
-        "trade_port":"10000",
-        "trade_broker_id":"9999",
-        "market_front":"180.168.146.187",
-        "market_port":"10010",
-        "market_broker_id":"9999",	
-    },
-	 "simnow_server":
-    {
-        "trade_front":"180.168.146.187",
-        "trade_port":"10000",
-        "trade_broker_id":"9999",
-        "market_front":"180.168.146.187",
-        "market_port":"10010",
-        "market_broker_id":"9999",	
-    },
-    "userinfo":
-    {
-        "username":"youdashi",
-        "password":"youdashi",
-        "test1":"apple"
-    }
+﻿{
+	"ctp_server": {
+		"trade_front": "180.168.146.187",
+		"trade_port": "10000",
+		"trade_broker_id": "9999",
+		"market_front": "180.168.146.187",
+		"market_port": "10010",
+		"market_broker_id": "9999"
+	},
+	"simnow_server": {
+		"trade_front": "180.168.146.187",
+		"trade_port": "10000",
+		"trade_broker_id": "9999",
+		"market_front": "180.168.146.187",
+		"market_port": "10010",
+		"market_broker_id": "9999"
+	},
+	"userinfo": {
+		"username": "youdashi",
+		"password": "youdashi",
+		"test1": "apple"
+	}
 }

@@ -33,8 +33,6 @@ SOURCES += \
     CCTPProxy.cpp \
     cfgutil.cpp \
     swbase.cpp \
-    CTrader.cpp \
-    CQuoter.cpp \
     cconsoleform.cpp \
     clogindialog.cpp \
     cconfighandler.cpp \
@@ -42,20 +40,20 @@ SOURCES += \
     ctraderproxy.cpp \
     ceventqueue.cpp \
     cevent.cpp \
-    cctpevent.cpp
+    cctpevent.cpp \
+    CCTPTrader.cpp \
+    CCTPQuoter.cpp \
+    ceventfactory.cpp \
+    cctpeventfactory.cpp \
+    cabstractevent.cpp
 
 HEADERS += \
         mainwindow.h \
     swbase.h \
     CBaseTrader.h \
     CCTPProxy.h \
-    CTraderRsp.h \
-    CTraderMD.h \
     cfgutil.h \
-    CQuery.h \
     STDLL.h \
-    CQuoter.h \
-    CTrader.h \
     cconsoleform.h \
     clogindialog.h \
     cconfighandler.h \
@@ -63,7 +61,16 @@ HEADERS += \
     ctraderproxy.h \
     ceventqueue.h \
     cevent.h \
-    cctpevent.h
+    cctpevent.h \
+    CCTPTrader.h \
+    CCTPTraderMD.h \
+    CCTPTraderRsp.h \
+    CCTPQuery.h \
+    CCTPQuoter.h \
+    ceventfactory.h \
+    cctpeventfactory.h \
+    cctpshared.h \
+    cabstractevent.h
 
 FORMS += \
         mainwindow.ui \

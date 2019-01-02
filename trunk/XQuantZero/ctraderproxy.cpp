@@ -1,1 +1,1 @@
-#include "ctraderproxy.h"
+﻿#include "ctraderproxy.h"

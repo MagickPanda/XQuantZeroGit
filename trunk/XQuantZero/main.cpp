@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+ï»¿#include "mainwindow.h"
 #include <QApplication>
 #include <QThread>
 #include <QTimer>
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // test section for event queue ## ²âÊÔÊÂ¼ş¶ÓÁĞ
+    // test section for event queue ## æµ‹è¯•äº‹ä»¶é˜Ÿåˆ—
 #if 1
     QThread t;
     QTimer timer;
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-    // test section for config loader ## ²âÊÔÅäÖÃ¶ÁÈ¡Àà
+    // test section for config loader ## æµ‹è¯•é…ç½®è¯»å–ç±»
 #if 1
     CConfigHandler &configHandler = CConfigHandler::getSingleton();
 

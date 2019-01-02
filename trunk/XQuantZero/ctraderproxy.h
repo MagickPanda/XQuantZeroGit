@@ -1,4 +1,4 @@
-#ifndef CTRADERPROXY_H
+﻿#ifndef CTRADERPROXY_H
 #define CTRADERPROXY_H
 
 #include "ThostFtdcTraderApi.h"

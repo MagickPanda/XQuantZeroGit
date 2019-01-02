@@ -1,4 +1,4 @@
-#include "cfgutil.h"
+ï»¿#include "cfgutil.h"
 
 
 
@@ -62,7 +62,7 @@ void CfgUtil::trim(string & str)
 			break;
 		}
 	}
-	if (i == str.size()) { // È«²¿ÊÇ¿Õ°××Ö·û´®
+	if (i == str.size()) { // å…¨éƒ¨æ˜¯ç©ºç™½å­—ç¬¦ä¸²
 		str = "";
 		return;
 	}
@@ -85,15 +85,15 @@ bool CfgUtil::analyseLine(const string & line, string & key, string & value)
 		return false;
 	int start_pos = 0, end_pos = line.size() - 1, pos;
 	if ((pos = line.find(COMMENT_CHAR)) != -1) {
-		if (0 == pos) {  // ĞĞµÄµÚÒ»¸ö×Ö·û¾ÍÊÇ×¢ÊÍ×Ö·û
+		if (0 == pos) {  // è¡Œçš„ç¬¬ä¸€ä¸ªå­—ç¬¦å°±æ˜¯æ³¨é‡Šå­—ç¬¦
 			return false;
 		}
 		end_pos = pos - 1;
 	}
-	string new_line = line.substr(start_pos, start_pos + 1 - end_pos);  // Ô¤´¦Àí£¬É¾³ı×¢ÊÍ²¿·Ö
+	string new_line = line.substr(start_pos, start_pos + 1 - end_pos);  // é¢„å¤„ç†ï¼Œåˆ é™¤æ³¨é‡Šéƒ¨åˆ†
 
 	if ((pos = new_line.find('=')) == -1)
-		return false;  // Ã»ÓĞ=ºÅ
+		return false;  // æ²¡æœ‰=å·
 
 	key = new_line.substr(0, pos);
 	value = new_line.substr(pos + 1, end_pos + 1- (pos + 1));

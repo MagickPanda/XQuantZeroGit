@@ -1,4 +1,4 @@
-#include "cconfighandler.h"
+﻿#include "cconfighandler.h"
 
 CConfigHandler::CConfigHandler()
 {
@@ -42,7 +42,17 @@ bool CConfigHandler::loadConfig(QString filename) {
                     m_ConfigSimnow[ tags_simnow_server[j] ] = value;
                 }
                 continue;
-                //find match continue ## �ҵ�ƥ�����ã�����ѭ��
+                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌÐøÑ­»·
+            }
+
+            if (sections[i] == "ctp_server") {
+                for (j = 0;j < count_simnow_server;j++) {
+                    QString value = subObj[ tags_ctp_server[j] ].toString();
+                    qDebug() << tags_ctp_server[j] << " is:" << value;
+                    m_ConfigCTP[ tags_ctp_server[j] ] = value;
+                }
+                continue;
+                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌÐøÑ­»·
             }
 
             if (sections[i] == "userinfo") {
@@ -52,7 +62,7 @@ bool CConfigHandler::loadConfig(QString filename) {
                     m_ConfigUserinfo[ tags_simnow_server[j] ] = value;
                 }
                 continue;
-                //find match continue ## �ҵ�ƥ�����ã�����ѭ��
+                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌÐøÑ­»·
             }
 
         }

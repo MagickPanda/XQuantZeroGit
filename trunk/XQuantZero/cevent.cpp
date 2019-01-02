@@ -1,6 +1,1 @@
-#include "cevent.h"
-
-CEvent::CEvent()
-{
-
-}
+﻿#include "cevent.h"

@@ -1,11 +1,11 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include "cconsoleform.h"
 
-#include "CQuoter.h"
-#include "CTrader.h"
+#include "CCTPQuoter.h"
+#include "CCTPTrader.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,8 +28,8 @@ public:
     }
 
 private:
-    CTrader *trader;
-    CQuoter *quoter;
+    CCTPTrader *trader;
+    CCTPQuoter *quoter;
 
 
     Ui::MainWindow *ui;

@@ -1,4 +1,4 @@
-#include "swbase.h"
+﻿#include "swbase.h"
 
 void DoubleToString(double val, string &ret) {
 	stringstream ss;

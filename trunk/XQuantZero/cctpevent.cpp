@@ -1,6 +1,1 @@
-#include "cctpevent.h"
-
-CCTPEvent::CCTPEvent()
-{
-
-}
+﻿#include "cctpevent.h"
