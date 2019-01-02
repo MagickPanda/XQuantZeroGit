@@ -1,4 +1,4 @@
-#include "CQuoter.h"
+#include "CCTPQuoter.h"
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -7,7 +7,35 @@
 #endif
 #endif
 
-int CQuoter::login() {
+///Inline utility function to convert result code into QString ## inline函数将CTP返回值转换为QString
+inline QString resultString(int code) {
+    // TODO: Change magic string into variable/external string
+
+    QString sResult;
+    switch (code) {
+        case CCTPQuoter::SUCCESS_POST:
+            sResult = "登陆成功。\n";
+            break;
+        case CCTPQuoter::FAILED_NETWORK:
+            sResult = "登陆网络连接失败。\n";
+            break;
+        case CCTPQuoter::FAILED_REACH_LIMITS:
+            sResult = "登陆未处理请求超过许可数。\n";
+            break;
+        case CCTPQuoter::FAILED_REACH_GRANTS:
+            sResult = "登陆每秒发送请求超过许可数。\n";
+            break;
+        default:
+            sResult.append("未知登陆失败 ");
+            sResult.append("CodeID:");
+            sResult.append(code);
+            sResult.append(" \n");
+            break;
+    }
+    return sResult;
+}
+
+int CCTPQuoter::login() {
 	CThostFtdcReqUserLoginField loginField;
 	memset(&loginField, 0, sizeof(loginField));
 	strcpy(loginField.BrokerID, brokerId.c_str());
@@ -50,7 +78,7 @@ int CQuoter::login() {
 	return iResult;
 }
 
-int CQuoter::logout() {
+int CCTPQuoter::logout() {
 	CThostFtdcUserLogoutField userLogout;
 	memset(&userLogout, 0, sizeof(userLogout));
 	strcpy(userLogout.BrokerID, brokerId.c_str());
@@ -83,14 +111,14 @@ int CQuoter::logout() {
 	return iResult;
 }
 
-int CQuoter::qrySubMarket(char **Instruments, int n) {
+int CCTPQuoter::qrySubMarket(char **Instruments, int n) {
 	int iResult2 = queryApi->UnSubscribeMarketData(Instruments, n);
 	int iResult = queryApi->SubscribeMarketData(Instruments, n);
 
 	return iResult;
 }
 
-void CQuoter::genMsg(CQuoter::MSG_TYPE type, string &msg) {
+void CCTPQuoter::genMsg(CCTPQuoter::MSG_TYPE type, string &msg) {
 	MSG_LIST_S temp;
 	temp.type = type;
 	temp.msg = msg;
@@ -98,30 +126,30 @@ void CQuoter::genMsg(CQuoter::MSG_TYPE type, string &msg) {
 	m_MsgList.insert(it, temp);
 }
 
-void CQuoter::emitMsg(MSG_LIST_S &msg) {
+void CCTPQuoter::emitMsg(MSG_LIST_S &msg) {
 	msg = m_MsgList.front();
 	m_MsgList.pop_front();
 }
 
-void CQuoter::tick(void) {
+void CCTPQuoter::tick(void) {
 	int iResult = login();
 
 
 }
 
 
-void CQuoter::OnFrontConnected() {
+void CCTPQuoter::OnFrontConnected() {
 
 }
 
-void CQuoter::OnFrontDisconnected(int nReason) {
+void CCTPQuoter::OnFrontDisconnected(int nReason) {
 }
 
-void CQuoter::OnHeartBeatWarning(int nTimeLapse) {
+void CCTPQuoter::OnHeartBeatWarning(int nTimeLapse) {
 
 }
 
-void CQuoter::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 	int test = 1;
 	std::cerr << "BrokerID: " << pRspUserLogin->BrokerID << std::endl;
 	std::cerr << "SessionID: " << pRspUserLogin->SessionID << std::endl;
@@ -130,39 +158,39 @@ void CQuoter::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostF
 	std::cerr << "Login Status: " << pRspInfo->ErrorMsg << std::endl;
 };
 
-void CQuoter::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 };
 
 
-void CQuoter::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 }
 
 
-void CQuoter::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 	if (pRspInfo) {
 		std::cerr << pRspInfo->ErrorMsg << std::endl;
 	}
 }
 
-void CQuoter::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 }
 
 
 ///订阅询价应答
-void CQuoter::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 };
 
 ///取消订阅询价应答
-void CQuoter::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
+void CCTPQuoter::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 };
 
 ///深度行情通知
-void CQuoter::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
+void CCTPQuoter::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
 	int test = 1;
 
 #if 0
@@ -226,6 +254,6 @@ void CQuoter::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketD
 }
 
 ///询价通知
-void CQuoter::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) {
+void CCTPQuoter::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) {
 
 };

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _CQUOTER_H_
-#define _CQUOTER_H_
+#ifndef _CCTPQuoter_H_
+#define _CCTPQuoter_H_
 
 #include <iostream>
 #include <string>
@@ -10,8 +10,8 @@
 #include <deque> 
 #include <list>
 #include "cfgutil.h"
-#include "CTraderRsp.h"
-#include "CTraderMD.h"
+#include "CCTPTraderRsp.h"
+#include "CCTPTraderMD.h"
 #include "STDLL.h"
 #include "swbase.h"
 
@@ -41,7 +41,7 @@ using namespace std;
 /////Ô¤Âñ±àºÅ
 //TThostFtdcParkedOrderIDType	ParkedOrderID;
 
-class CQuoter : public CThostFtdcMdSpi {
+class CCTPQuoter : public CThostFtdcMdSpi {
 public:
 	enum {
 		SUCCESS_POST = 0, ///<³É¹¦
@@ -58,7 +58,7 @@ public:
 	};
 
 
-	CQuoter()
+    CCTPQuoter()
 	{
 		reqId = 0;
 		getCfg = CfgUtil::getInstance("rsh.cfg");
@@ -76,7 +76,7 @@ public:
 
 	}
 
-	~CQuoter()
+    ~CCTPQuoter()
 	{
 		//tradeApi->Join();
 		queryApi->Release();
@@ -87,7 +87,7 @@ public:
 
         void clearMsgList(void) { m_MsgList.clear(); };
 
-        void genMsg(CQuoter::MSG_TYPE type, string &msg);
+        void genMsg(CCTPQuoter::MSG_TYPE type, string &msg);
         void emitMsg(MSG_LIST_S &msg);
 
         int login(void);
@@ -190,6 +190,6 @@ private:
 	MSG_LIST m_MsgList;
 };
 
-//extern CQuoter *g_Quoter;
+//extern CCTPQuoter *g_Quoter;
 
 #endif

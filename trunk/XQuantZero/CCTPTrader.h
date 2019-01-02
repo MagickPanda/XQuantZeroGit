@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _CTRADER_H_
-#define _CTRADER_H_
+#ifndef _CCTPTrader_H_
+#define _CCTPTrader_H_
 
 #include <iostream>
 #include <string>
@@ -10,8 +10,9 @@
 #include <deque> 
 #include <list>
 #include "cfgutil.h"
-#include "CTraderRsp.h"
-#include "CTraderMD.h"
+#include "CCTPQuery.h"
+#include "CCTPTraderRsp.h"
+#include "CCTPTraderMD.h"
 #include "STDLL.h"
 #include "swbase.h"
 
@@ -43,7 +44,7 @@ using namespace std;
 
 
 ///TODO: 加入CurOrderRef锁，避免冲突
-class CTrader : public CThostFtdcTraderSpi {
+class CCTPTrader : public CThostFtdcTraderSpi {
 public:
 	enum {
 		SUCCESS_POST = 0, ///<成功
@@ -79,7 +80,7 @@ public:
 		ORDER_CLOSE_SELL_YEST
 	};
 
-	CTrader()
+    CCTPTrader()
 	{
 		m_MsgList = debug_new MSG_LIST();
 
@@ -93,15 +94,15 @@ public:
 
 
 
-		tradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi("./thosttraderapi.dll");
+        tradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi("./thosttraderapi.dll");
 		tradeApi->RegisterFront(const_cast<char*>(tradeIp.c_str()));
-		tradeApi->RegisterSpi((CThostFtdcTraderSpi*)this);
+        tradeApi->RegisterSpi((CThostFtdcTraderSpi*)this);
 		tradeApi->SubscribePrivateTopic(THOST_TERT_RESUME);
 		tradeApi->SubscribePublicTopic(THOST_TERT_RESUME);
 		tradeApi->Init();
 		//tradeApi->Join();
 
-		//CTraderRsp *rsp = new CTraderRsp;
+        //CCTPTraderRsp *rsp = new CCTPTraderRsp;
 		//tradeApi->RegisterSpi(rsp);
 		CurOrderRefInt = 1;
 		snprintf(CurOrderRef, 13, "%.12d", CurOrderRefInt);
@@ -109,7 +110,7 @@ public:
 		/*strcpy(LastOrderRef, "           1");*/
 	}
 
-//    ~CTrader();
+//    ~CCTPTrader();
 
 	void failIncRef() {
 		CurOrderRefInt++;
@@ -121,7 +122,7 @@ public:
 
 	void clearMsgList(void) { m_MsgList->clear(); };
 
-	void genMsg(CTrader::MSG_TYPE type, string &msg);
+    void genMsg(CCTPTrader::MSG_TYPE type, string &msg);
 	void emitMsg(MSG_LIST_S &msg);*/
 
         int login(void);
@@ -310,7 +311,7 @@ private:
 
 	CfgUtil* getCfg;
 
-	CThostFtdcTraderApi *tradeApi;
+    CThostFtdcTraderApi *tradeApi;
 	/*CThostFtdcMdApi *queryApi;*/
 	string brokerId;
 	string userId;
@@ -324,6 +325,6 @@ private:
 	MSG_LIST *m_MsgList;
 };
 
-//extern CTrader *g_Trader;
+//extern CCTPTrader *g_Trader;
 
 #endif

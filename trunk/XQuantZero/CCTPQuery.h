@@ -2,7 +2,7 @@
 
 #include "ThostFtdcMdApi.h";
 
-class CQuery : CThostFtdcMdApi {
+class CCTPQuery : CThostFtdcMdApi {
 public:
 	///删除接口对象本身
 	///@remark 不再使用本接口对象时,调用该函数删除接口对象

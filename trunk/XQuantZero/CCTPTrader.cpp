@@ -1,4 +1,4 @@
-#include "CTrader.h"
+#include "CCTPTrader.h"
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -7,14 +7,43 @@
 #endif
 #endif
 
-//CTrader::~CTrader() {
+//CCTPTrader::~CCTPTrader() {
 //    //tradeApi->Join();
 //    tradeApi->Release();
 //    delete m_MsgList;
 //    m_MsgList = NULL;
 //}
 
-int CTrader::login() {
+
+///Inline utility function to convert result code into QString ## inline函数将CTP返回值转换为QString
+inline QString resultString(int code) {
+    // TODO: Change magic string into variable/external string
+
+    QString sResult;
+    switch (code) {
+        case CCTPTrader::SUCCESS_POST:
+            sResult = "登陆成功。\n";
+            break;
+        case CCTPTrader::FAILED_NETWORK:
+            sResult = "登陆网络连接失败。\n";
+            break;
+        case CCTPTrader::FAILED_REACH_LIMITS:
+            sResult = "登陆未处理请求超过许可数。\n";
+            break;
+        case CCTPTrader::FAILED_REACH_GRANTS:
+            sResult = "登陆每秒发送请求超过许可数。\n";
+            break;
+        default:
+            sResult.append("未知登陆失败 ");
+            sResult.append("CodeID:");
+            sResult.append(code);
+            sResult.append(" \n");
+            break;
+    }
+    return sResult;
+}
+
+int CCTPTrader::login() {
 	CThostFtdcReqUserLoginField loginField;
 	memset(&loginField, 0, sizeof(loginField));
 	strcpy(loginField.BrokerID, brokerId.c_str());
@@ -34,32 +63,17 @@ int CTrader::login() {
 	//g_Frame->writeLog(sMsg2, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg2);
 
-	string sResult = { 0 };
-	int iResult = tradeApi->ReqUserLogin(&loginField, ++reqId);
-	switch (iResult) {
-		case SUCCESS_POST:
-			sResult = "登陆成功。\n";
-			break;
-		case FAILED_NETWORK:
-			sResult = "登陆网络连接失败。\n";
-			break;
-		case FAILED_REACH_LIMITS:
-			sResult = "登陆未处理请求超过许可数。\n";
-			break;
-		case FAILED_REACH_GRANTS:
-			sResult = "登陆每秒发送请求超过许可数。\n";
-			break;
-		default:
-			sResult = "未知登陆失败。\n";
-			break;
-	}
+
+    int iResult = tradeApi->ReqUserLogin(&loginField, ++reqId);
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
 	return iResult;
 }
 
-int CTrader::logout() {
+int CCTPTrader::logout() {
 	CThostFtdcUserLogoutField userLogout;
 	memset(&userLogout, 0, sizeof(userLogout));
 	strcpy(userLogout.BrokerID, brokerId.c_str());
@@ -69,32 +83,16 @@ int CTrader::logout() {
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);;
 
-	string sResult = { 0 };
-	int iResult = tradeApi->ReqUserLogout(&userLogout, ++reqId);
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "注销成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "注销网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "注销未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "注销每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "未知注销失败。\n";
-		break;
-	}
+    int iResult = tradeApi->ReqUserLogout(&userLogout, ++reqId);
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
 	return iResult;
 }
 
-int CTrader::queryPos() {
+int CCTPTrader::queryPos() {
 	CThostFtdcQryInvestorPositionField QryInvestorPosition;
 	memset(&QryInvestorPosition, 0, sizeof(QryInvestorPosition));
 	strcpy(QryInvestorPosition.BrokerID, brokerId.c_str());
@@ -104,26 +102,11 @@ int CTrader::queryPos() {
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);
 
-	string sResult = { 0 };
-	int iResult = tradeApi->ReqQryInvestorPosition(&QryInvestorPosition, ++reqId);
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "获取持仓成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "获取持仓网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "获取持仓未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "获取持仓每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "获取持仓注销失败。\n";
-		break;
-	}
-	//g_Frame->writeLog(sResult, LOG_TRADE);
+
+    int iResult = tradeApi->ReqQryInvestorPosition(&QryInvestorPosition, ++reqId);
+    QString result_str = resultString(iResult);
+
+    //g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
 
@@ -131,11 +114,11 @@ int CTrader::queryPos() {
 }
 
 ///TODO: ENG:add queryHold ## 中： 加入queryHold实体
-int CTrader::queryHold() {
+int CCTPTrader::queryHold() {
     return -1;
 }
 
-int  CTrader::insert(string instrumentID, int price, int volume, int code, int reqID)
+int  CCTPTrader::insert(string instrumentID, int price, int volume, int code, int reqID)
 {
 	CThostFtdcInputOrderField inputOrder; //插入报单数据
 	bool bInsert = false;
@@ -294,32 +277,16 @@ int  CTrader::insert(string instrumentID, int price, int volume, int code, int r
 	//g_Frame->writeLog(code_type, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, code_type);
 
-	string sResult = { 0 };
 	int iResult = tradeApi->ReqOrderInsert(&inputOrder, reqID);
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "下单成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "下单网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "下单未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "下单每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "下单失败。\n";
-		break;
-	}
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
 	return iResult;
 }
 
-int  CTrader::insert2(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
+int  CCTPTrader::insert2(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
 {
 	CThostFtdcInputOrderField inputOrder; //插入报单数据
 	bool bInsert = false;
@@ -405,25 +372,9 @@ int  CTrader::insert2(string instrumentID, int price, int volume, int code, int 
 	//g_Frame->writeLog(code_type, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, code_type);
 
-	string sResult = { 0 };
 	int iResult = tradeApi->ReqOrderInsert(&inputOrder, reqID);
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "下单成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "下单网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "下单未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "下单每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "下单失败。\n";
-		break;
-	}
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
@@ -431,7 +382,7 @@ int  CTrader::insert2(string instrumentID, int price, int volume, int code, int 
 }
 
 ///
-int  CTrader::insertAction(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
+int  CCTPTrader::insertAction(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
 {
 	CThostFtdcInputOrderActionField inputOrder; //插入报单数据
 	bool bInsert = false;
@@ -463,27 +414,10 @@ int  CTrader::insertAction(string instrumentID, int price, int volume, int code,
 	sMsg.append("\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);
-	
 
-	string sResult = { 0 };
 	int iResult = tradeApi->ReqOrderAction(&inputOrder, reqID);
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "下单成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "下单网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "下单未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "下单每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "下单失败。\n";
-		break;
-	}
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
@@ -491,7 +425,7 @@ int  CTrader::insertAction(string instrumentID, int price, int volume, int code,
 }
 
 ///撤单
-int CTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string InstrumentID)
+int CCTPTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string InstrumentID)
 {
 	CThostFtdcInputOrderActionField InputOrderAction;
 	memset(&InputOrderAction, 0, sizeof(InputOrderAction));
@@ -513,7 +447,7 @@ int CTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string Inst
 	return iResult;
 }
 
-int CTrader::orderAction2(char * orderSysID, string instrumentID)
+int CCTPTrader::orderAction2(char * orderSysID, string instrumentID)
 {
 	CThostFtdcInputOrderActionField InputOrderAction;
 	memset(&InputOrderAction, 0, sizeof(InputOrderAction));
@@ -533,7 +467,7 @@ int CTrader::orderAction2(char * orderSysID, string instrumentID)
 	return iResult;
 }
 
-int CTrader::queryOrderAction(string instrumentID, TThostFtdcOrderRefType orderRef, int reqID)
+int CCTPTrader::queryOrderAction(string instrumentID, TThostFtdcOrderRefType orderRef, int reqID)
 {
 	CThostFtdcInputOrderActionField InputOrderAction;
 	memset(&InputOrderAction, 0, sizeof(InputOrderAction));
@@ -554,7 +488,7 @@ int CTrader::queryOrderAction(string instrumentID, TThostFtdcOrderRefType orderR
 	return iResult;
 }
 
-int CTrader::queryTrade(string instrumentID, int reqID)
+int CCTPTrader::queryTrade(string instrumentID, int reqID)
 {
 	CThostFtdcQryTradeField QryTrade;
 	memset(&QryTrade, 0, sizeof(QryTrade));
@@ -566,7 +500,7 @@ int CTrader::queryTrade(string instrumentID, int reqID)
 	return iResult;
 }
 
-int CTrader::queryOrder(string instrumentID, int reqID)
+int CCTPTrader::queryOrder(string instrumentID, int reqID)
 {
 	CThostFtdcQryOrderField QryOrder;
 	memset(&QryOrder, 0, sizeof(QryOrder));
@@ -578,7 +512,7 @@ int CTrader::queryOrder(string instrumentID, int reqID)
 	return iResult;
 }
 
-int  CTrader::queryDepthData(string instrumentID)
+int  CCTPTrader::queryDepthData(string instrumentID)
 {
 	char _instrumentId[10];
 	CThostFtdcQryDepthMarketDataField QryDepthMarketData;
@@ -592,31 +526,15 @@ int  CTrader::queryDepthData(string instrumentID)
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);
 
-	string sResult = { 0 };
-	switch (iResult) {
-	case SUCCESS_POST:
-		sResult = "获取行情成功。\n";
-		break;
-	case FAILED_NETWORK:
-		sResult = "获取行情网络连接失败。\n";
-		break;
-	case FAILED_REACH_LIMITS:
-		sResult = "获取行情未处理请求超过许可数。\n";
-		break;
-	case FAILED_REACH_GRANTS:
-		sResult = "获取行情每秒发送请求超过许可数。\n";
-		break;
-	default:
-		sResult = "获取行情注销失败。\n";
-		break;
-	}
+    QString result_str = resultString(iResult);
+
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
 	return iResult;
 }
 
-int CTrader::qryTradingAccount() {
+int CCTPTrader::qryTradingAccount() {
 	string sMsg("正在获取行情：");
 
 	CThostFtdcQryTradingAccountField QryTradingAccount;
@@ -638,14 +556,14 @@ int CTrader::qryTradingAccount() {
 	return iResult;
 }
 
-void CTrader::tick(void) {
+void CCTPTrader::tick(void) {
 	int iResult = login();
 
 	
 }
 
 ///结算结果确认
-void CTrader::settleConfirm(void)
+void CCTPTrader::settleConfirm(void)
 {
 	CThostFtdcSettlementInfoConfirmField SettlementInfoConfirm;
 	strcpy(SettlementInfoConfirm.BrokerID, brokerId.c_str());
@@ -653,12 +571,12 @@ void CTrader::settleConfirm(void)
 	int iResult = tradeApi->ReqSettlementInfoConfirm(&SettlementInfoConfirm, ++reqId);
 }
 
-void CTrader::OnFrontConnected()
+void CCTPTrader::OnFrontConnected()
 {
 	//g_Frame->consoleOutput("交易服务器已连接。\n");
 }
 
-void CTrader::OnFrontDisconnected(int nReason)
+void CCTPTrader::OnFrontDisconnected(int nReason)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "--->>> " << "reason: " << nReason << std::endl;
@@ -667,20 +585,20 @@ void CTrader::OnFrontDisconnected(int nReason)
 	//g_Frame->Reconnect();
 }
 
-void CTrader::OnHeartBeatWarning(int nTimeLapse)
+void CCTPTrader::OnHeartBeatWarning(int nTimeLapse)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "--->>> " << nTimeLapse << std::endl;
 }
 
-void CTrader::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "brokerID: " << pRspAuthenticateField->BrokerID << " UserID: " << pRspAuthenticateField->UserID << " ProductInfo: " << pRspAuthenticateField->UserProductInfo << std::endl;
 	std::cerr << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
-void CTrader::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//SessionID = pRspUserLogin->SessionID;
 	//FrontID = pRspUserLogin->FrontID;
@@ -702,14 +620,14 @@ void CTrader::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostF
 	//g_Frame->SendEventSMTAGUI();
 }
 
-void CTrader::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "brokerID: " << pUserLogout->BrokerID << " UserID: " << pUserLogout->UserID << std::endl;
 	std::cerr << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
-void CTrader::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "brokerID: " << pUserPasswordUpdate->BrokerID << " UserID: " << pUserPasswordUpdate->UserID
@@ -718,7 +636,7 @@ void CTrader::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPa
 }
 
 ///错误应答
-void CTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "ErrorID: " << pRspInfo->ErrorID << " ErrorMsg: " << pRspInfo->ErrorMsg
@@ -726,7 +644,7 @@ void CTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool 
 }
 
 ///报单录入请求响应
-void CTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pRspInfo) {
 		//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, pRspInfo->ErrorMsg);
@@ -741,87 +659,11 @@ void CTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtd
 	string temp(pInputOrder->OrderRef);
 
 	//vector<order_struct>::iterator it = //g_Frame->m_order_list.begin();
-	//for (; it != //g_Frame->m_order_list.end(); it++) {
-
-#if 0
-	//TODO: make this thread safe, thread-related bugs!
-	//wxMutexLocker	lock(s_order_list_lock);
-	for (int index = 0; index < //g_Frame->m_order_list.size(); index++) {
-		order_struct &target = //g_Frame->m_order_list.at(index);
-		if (!strcmp(temp.c_str(), target.OrderRef1)) {
-			int test = 1;
-		}
-
-		if (!strcmp(temp.c_str(), target.OrderRef1)) {
-
-			/*strcpy((*it).OrderSysID1, pInputOrder->OrderSysID);*/
-			int type = target.type;
-
-			String t, t2;
-
-			switch (type) {
-				case OS_ST_INSERTING:
-					target.type = OS_ST_NONE;
-
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-
-
-					t2 = os_st_table[target.type];
-					t = __FUNCTION__ + String(" errorID: ") + pRspInfo->ErrorMsg + t2 + String("reqID1: ") + String::Format(wxT("%i"), target.reqID1);
-					t.append(" ");
-					t.append("OS_ST_INSERTING Reverting to OS_ST_NONE\n");
-					//g_Frame->writeLog(t.ToStdString(), LOG_TRADE);
-					//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-				case OS_ST_FINISHING:
-					target.type = OS_ST_NONE;
-
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-
-
-					t2 = os_st_table[target.type];
-					t = __FUNCTION__ + String(" errorID: ") + pRspInfo->ErrorMsg + t2 + String("reqID1: ")  + String::Format(wxT("%i"), target.reqID1);
-					t.append(" ");
-					t.append("OS_ST_FINISH Reverting to OS_ST_NONE\n");
-					//g_Frame->writeLog(t.ToStdString(), LOG_TRADE);
-					//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-					break;
-				default:
-					t2 = os_st_table[target.type];
-					t = __FUNCTION__ + String(" errorID: ") + pRspInfo->ErrorMsg + t2 + String("reqID1: ") + String::Format(wxT("%i"), target.reqID1);
-					t.append(" ");
-					t.append("UNKNOWN STATUS Reverting to OS_ST_NONE\n");
-					//g_Frame->writeLog(t.ToStdString(), LOG_TRADE);
-					//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-					break;
-			}
-
-
-			//if (target.type != OS_ST_INSERTING) {
-			//	string t2(os_st_table[target.type]);
-			//	string t = "WARN:invalid order before inserted: " + t2;
-			//	t.append("\n");
-			//	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-			//}
-
-			////target.type = OS_ST_NONE;
-
-			//strcpy(target.InsertDate, sw_getDate().c_str());
-			//strcpy(target.InsertTime, sw_getTime().c_str());
-
-			//g_Frame->m_Loader->write_order(default_order_path, target);
-			//g_Frame->updateGridsExt();
-
-			break;
-
-		}
-	}
-#endif
+    //for (; it != //g_Frame->m_order_list.end(); it++) {
 }
 
 ///投资者结算结果确认响应
-void CTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "brokerID: " << pSettlementInfoConfirm->BrokerID << " UserID: " << pSettlementInfoConfirm->InvestorID
@@ -830,7 +672,7 @@ void CTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *p
 }
 
 ///报单通知
-void CTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
+void CCTPTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 {
 	//strcpy(InstrumentID, pOrder->InstrumentID);
 	//strcpy(OrderRef, pOrder->OrderRef);
@@ -842,206 +684,12 @@ void CTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 		<< "OrderStatus" << pOrder->StatusMsg << std::endl;
 
 	string temp(pOrder->OrderRef);
-	
-#if 0
-	/*vector<order_struct>::iterator it = //g_Frame->m_order_list.begin();*/
-	int count = 0;
 
-	wxMutexLocker	lock(s_order_list_lock);
-	/*for (; it != //g_Frame->m_order_list.end(); ++it) {*/
-	for (int index = 0; index < //g_Frame->m_order_list.size(); index++) {
-		order_struct& target = //g_Frame->m_order_list.at(index);
-		if (!strcmp(temp.c_str(), target.OrderRef1)) {
-			int test = 1;
-		}
-
-		// 验证回放时间戳
-		int time_old = sprintf("%d", target.UpdateTime);
-		int time_new = sprintf("%d", pOrder->UpdateTime);
-		if (time_old > time_new) {
-			string temp;
-			temp.append(target.UpdateTime);
-			temp.append(" ");
-			temp.append("<");
-			temp.append(" ");
-			temp.append(pOrder->UpdateTime);
-			temp.append(" ");
-			temp.append("ignoring.");
-
-			//g_Frame->writeLog(temp, LOG_QUOTE);
-			continue;
-		}
-
-		count++;
-
-		if (!strcmp(temp.c_str(), target.OrderRef1) &&
-			pOrder->FrontID == target.FrontID1 &&
-			pOrder->SessionID == target.SessionID1) {
-
-			strcpy(target.OrderSysID1, pOrder->OrderSysID );
-
-			bool bValidStatus = false;
-			string	s_OrderStatus;
-
-			switch (pOrder->OrderStatus) {
-			case THOST_FTDC_OST_AllTraded:///全部成交
-				bValidStatus = true;
-				s_OrderStatus = "全部成交";
-				if (target.type == OS_ST_FINISHING || 
-					target.type == OS_ST_FINISHING_ACK || 
-					target.type == OS_ST_FINISH_CANCEL ||
-					target.type == OS_ST_FINISH_CANCEL_ACK) {
-					target.type = OS_ST_FINISHED;
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-					break;
-				}
-				if (target.type == OS_ST_INSERTED || 
-					target.type == OS_ST_INSERTING ||
-					target.type == OS_ST_INSERTING_ACK ||
-					target.type == OS_ST_INSERT_CANCEL ||
-					target.type == OS_ST_INSERT_CANCEL_ACK) {
-					target.type = OS_ST_CONFIRMED;
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-					break;
-				}
-				break;
-			case THOST_FTDC_OST_PartTradedQueueing:///部分成交还在队列中
-				s_OrderStatus = "部分成交还在队列中";
-				bValidStatus = true;
-				//if (target.type == OS_ST_FINISHING) {
-				//	target.type = OS_ST_FINISHED;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	break;
-				//}
-				//if (target.type == OS_ST_INSERTED ||
-				//	target.type == OS_ST_INSERTING ||
-				//	target.type == OS_ST_INSERTING_ACK) {
-				//	target.type = OS_ST_CONFIRMED;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	break;
-				//}
-				break;
-			case THOST_FTDC_OST_NoTradeQueueing:///部分成交不在队列中
-				s_OrderStatus = "部分成交不在队列中";
-				bValidStatus = true;
-				//if (target.type == OS_ST_FINISHING) {
-				//	target.type = OS_ST_FINISHED;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	break;
-				//}
-				//if (target.type == OS_ST_INSERTED ||
-				//	target.type == OS_ST_INSERTING ||
-				//	target.type == OS_ST_INSERTING_ACK) {
-				//	target.type = OS_ST_CONFIRMED;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	break;
-				//}
-				break;
-			case THOST_FTDC_OST_PartTradedNotQueueing:///未成交还在队列中
-				s_OrderStatus = "未成交还在队列中";
-				bValidStatus = true;
-				break;
-			case THOST_FTDC_OST_Canceled:	///撤单
-				s_OrderStatus = "已撤单";
-				bValidStatus = true;
-				if (target.type == OS_ST_INSERT_CANCEL) {
-					target.type = OS_ST_INSERT_CANCELLED;
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-					break;
-				}
-				if (target.type == OS_ST_FINISH_CANCEL) {
-					target.type = OS_ST_FINISH_CANCELLED;
-					//g_Frame->m_Loader->write_order(default_order_path, target);
-					//g_Frame->updateGridsExt();
-					break;
-				}
-				break;
-			case THOST_FTDC_OST_Unknown:///未知
-				s_OrderStatus = "未知";
-				bValidStatus = false;
-				break;
-			case THOST_FTDC_OST_NotTouched:	///尚未触发
-				s_OrderStatus = "尚未触发";
-				bValidStatus = true;
-				break;
-			case THOST_FTDC_OST_Touched:///已触发
-				s_OrderStatus = "已触发";
-				bValidStatus = true;
-				break;
-			default:
-				s_OrderStatus = "未知错误状态";
-				break;
-
-			}
-
-			if (bValidStatus) {
-				//if (target.type == OS_ST_INSERTING) {
-				//	target.type = OS_ST_INSERTING_ACK;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	//break;
-				//}
-
-				//if (target.type == OS_ST_FINISHING) {
-				//	target.type = OS_ST_FINISHING_ACK;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	//break;
-				//}
-
-				//if (target.type == OS_ST_INSERT_CANCEL) {
-				//	target.type = OS_ST_INSERT_CANCEL_ACK;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	//break;
-				//}
-
-				//if (target.type == OS_ST_FINISH_CANCEL) {
-				//	target.type = OS_ST_FINISH_CANCEL_ACK;
-				//	//g_Frame->m_Loader->write_order(default_order_path, target);
-				//	//g_Frame->updateGridsExt();
-				//	//break;
-				//}
-			}
-
-
-			if (target.type > 14) {
-				int fail = 1;
-			}
-
-			string t2(os_st_table[target.type]);
-			string t = "WARN:OnRtnOrder invalid order before confirmed: " + t2;
-			t.append("\n");
-			t.append(s_OrderStatus);
-			t.append("\n");
-
-			std::cerr << "ReqID: " << target.reqID1 << std::endl;
-
-			//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-
-			//g_Frame->writeLog(t, LOG_ORDER);
-
-			if (bValidStatus) {
-				int test = 1;
-			}
-
-			continue;
-
-		}
-	}
-#endif
 
 }
 
 ///成交通知
-void CTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
+void CCTPTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InvestorID: " << pTrade->InvestorID << " InstrumentID: " << pTrade->InstrumentID << " OrderSysID: " << pTrade->OrderSysID
@@ -1049,95 +697,10 @@ void CTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 
 	string temp(pTrade->OrderRef);
 
-#if 0
-
-	/*vector<order_struct>::iterator it = //g_Frame->m_order_list.begin();*/
-	int count = 0;
-	/*for (; it != //g_Frame->m_order_list.end(); it++) {*/
-
-	bool bFound = false;
-
-	wxMutexLocker	lock(s_order_list_lock);
-	for (int index = 0; index < //g_Frame->m_order_list.size(); index++) {
-		order_struct& target = //g_Frame->m_order_list.at(index);
-		if (!strcmp(pTrade->OrderRef, target.OrderRef1)) {
-			//!strcmp(pTrade->ExchangeID, (*it).ExchangeID1 ) ) {
-
-			bFound = true;
-
-			count++;
-
-			//strcpy(target.OrderSysID1, pTrade->OrderSysID);
-
-			//if (target.type == OS_ST_INSERTING_ACK ||
-			//	target.type == OS_ST_INSERTING) {
-			//	target.type = OS_ST_CONFIRMED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-
-			//if (target.type == OS_ST_FINISHING_ACK ||
-			//	target.type == OS_ST_FINISHING) {
-			//	target.type = OS_ST_FINISHED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-			//
-			//if (target.type == OS_ST_INSERT_CANCEL_ACK ||
-			//	target.type == OS_ST_INSERT_CANCEL) {
-			//	target.type = OS_ST_INSERT_CANCELLED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-
-			//if (target.type == OS_ST_FINISH_CANCEL_ACK ||
-			//	target.type == OS_ST_FINISH_CANCEL) {
-			//	target.type = OS_ST_FINISH_CANCELLED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-
-			//if (target.type == OS_ST_INSERTING) {
-			//	target.type = OS_ST_CONFIRMED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-
-			//if (target.type == OS_ST_FINISHING) {
-			//	target.type = OS_ST_FINISHED;
-			//	//g_Frame->m_Loader->write_order(default_order_path, target);
-			//	//g_Frame->updateGridsExt();
-			//	break;
-			//}
-
-			//string t2(os_st_table[target.type]);
-			//string t = "WARN:invalid order before confirmed: " + t2;
-			//t.append("\n");
-
-			//std::cerr << "ReqID: " << target.reqID1 << std::endl;
-
-			//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, t);
-
-			//g_Frame->writeLog(t, LOG_ORDER);
-
-
-			continue;
-		}
-	}
-
-	if (bFound == false) {
-		int fail = 1;
-	}
-#endif
 }
 
 ///报单录入错误回报
-void CTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
+void CCTPTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InvestorID: " << pInputOrder->InvestorID << " InstrumentID: " << pInputOrder->InstrumentID << " OrderRef: " << pInputOrder->OrderRef << std::endl;
@@ -1180,7 +743,7 @@ void CTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThost
 }
 
 ///报单操作错误回报
-void CTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo)
+void CCTPTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InvestorID: " << pOrderAction->InvestorID << " InstrumentID: " << pOrderAction->InstrumentID << " OrderRef: " << pOrderAction->OrderRef << std::endl;
@@ -1204,7 +767,7 @@ void CTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CTho
 }
 
 ///报单操作请求响应
-void CTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (!pRspInfo) {
 		return;
@@ -1417,7 +980,7 @@ void CTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderActio
 }
 
 ///请求查询投资者持仓响应
-void CTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	//std::cerr << "今持仓：" << pInvestorPosition->TodayPosition << " 昨持仓：" << pInvestorPosition->YdPosition
@@ -1426,14 +989,14 @@ void CTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvesto
 }
 
 ///请求查询行情响应
-void CTrader::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InstrumentID: " << pDepthMarketData->InstrumentID << " UpdateTime: " << pDepthMarketData->UpdateTime << std::endl;
 }
 
 ///预埋单录入请求响应
-void CTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//strcpy(InstrumentID, pParkedOrder->InstrumentID);
 	//strcpy(ParkedOrderID, pParkedOrder->ParkedOrderID);
@@ -1447,7 +1010,7 @@ void CTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, C
 }
 
 ///预埋撤单操作请求响应
-void CTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InvestorID: " << pParkedOrderAction->InvestorID << " InstrumentID: " << pParkedOrderAction->InstrumentID
@@ -1459,7 +1022,7 @@ void CTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOr
 }
 
 ///删除预埋单响应
-void CTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "BrokerID: " << pRemoveParkedOrder->BrokerID << " InvestorID: " << pRemoveParkedOrder->InvestorID
@@ -1471,7 +1034,7 @@ void CTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemovePa
 }
 
 ///删除预埋撤单响应
-void CTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	if (pRspInfo)
@@ -1481,7 +1044,7 @@ void CTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionFiel
 }
 
 ///请求查询报单响应
-void CTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pOrder == NULL) {
 		int test = 1;
@@ -1504,7 +1067,7 @@ void CTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField
 }
 
 ///请求查询成交响应
-void CTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pTrade == NULL) {
 		int test = 1;
@@ -1528,7 +1091,7 @@ void CTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField
 }
 
 ///请求查询资金账户响应
-void CTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 
@@ -1555,7 +1118,7 @@ void CTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAcco
 }
 
 ///请求查询合约手续费率响应
-void CTrader::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void CCTPTrader::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	;
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
