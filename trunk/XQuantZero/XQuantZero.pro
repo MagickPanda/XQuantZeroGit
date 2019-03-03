@@ -22,7 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-# uses C++ 11 features
+# uses C++ 11 features(for thread-safe singleton)
 CONFIG += c++11
 
 
@@ -42,7 +42,12 @@ SOURCES += \
     cevent.cpp \
     cctpevent.cpp \
     CCTPTrader.cpp \
-    CCTPQuoter.cpp
+    CCTPQuoter.cpp \
+    ceventfactory.cpp \
+    cctpeventfactory.cpp \
+    cabstractevent.cpp \
+    cabstracteventhandler.cpp \
+    cctpeventhandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -63,7 +68,13 @@ HEADERS += \
     CCTPTraderMD.h \
     CCTPTraderRsp.h \
     CCTPQuery.h \
-    CCTPQuoter.h
+    CCTPQuoter.h \
+    ceventfactory.h \
+    cctpeventfactory.h \
+    cctpshared.h \
+    cabstractevent.h \
+    cabstracteventhandler.h \
+    cctpeventhandler.h
 
 FORMS += \
         mainwindow.ui \

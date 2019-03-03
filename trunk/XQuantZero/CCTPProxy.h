@@ -6,7 +6,7 @@
 class CCTPProxy : public CTraderProxy
 {
 public:
-    CCTPProxy(CCTPTrader trader) : mTrader(trader) {}
+    //CCTPProxy(CCTPTrader trader) : mTrader(trader) {}
 
     virtual int login(void);
 

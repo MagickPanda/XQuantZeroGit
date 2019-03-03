@@ -11,9 +11,6 @@
 #include "ThostFtdcMdApi.h"
 #include "ThostFtdcTraderApi.h"
 
-
-using namespace xq_event;
-
 class CCTPEventFactory : public CEventFactory
 {
 public:
@@ -39,6 +36,7 @@ private:
 
 CAbstractEvent* CCTPEventFactory::produceEvent(qint32 eventID, void *userinfo) {
     CAbstractEvent *newEvent;
+    /*
     switch (eventID) {
     case CTP_event::EVENT_T_LOGIN:
         newEvent = traderLoginEvent(userinfo);
@@ -50,9 +48,10 @@ CAbstractEvent* CCTPEventFactory::produceEvent(qint32 eventID, void *userinfo) {
         break;
 
     }
+    */
     return newEvent;
 }
 
-static CCTPEventFactory ctpFactory;
+//static CCTPEventFactory ctpFactory;
 
 #endif // CCTPEVENTFACTORY_H

@@ -35,7 +35,7 @@ inline QString resultString(int code) {
     return sResult;
 }
 
-int CCTPQuoter::login() {
+int CCTPQuoter::login(void) {
 	CThostFtdcReqUserLoginField loginField;
 	memset(&loginField, 0, sizeof(loginField));
 	strcpy(loginField.BrokerID, brokerId.c_str());

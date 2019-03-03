@@ -21,37 +21,37 @@ public:
 
     const QString default_filename = "xq_conig.json";
 
-    // config tags count / ÅäÖÃ±êÇ©ÊıÁ¿
+    // config tags count / é…ç½®æ ‡ç­¾æ•°é‡
     static const qint32 sections_count = 3;
 
-    // hard-coded QString name for config tabs ## Ó²coded QStringÅäÖÃÃû³Æ
+    // hard-coded QString name for config tabs ## ç¡¬coded QStringé…ç½®åç§°
     const QString sections[sections_count] = {
         "ctp_server", "simnow_server", "userinfo"
     };
 
 
-    // config tags count / ÅäÖÃ±êÇ©ÊıÁ¿
+    // config tags count / é…ç½®æ ‡ç­¾æ•°é‡
     static const qint32 count_ctp_server = 6;
 
-    // hard-coded QString name for config tags ## Ó²coded QStringÅäÖÃÃû³Æ
+    // hard-coded QString name for config tags ## ç¡¬coded QStringé…ç½®åç§°
     const QString tags_ctp_server[count_ctp_server] = {
         "trade_front", "trade_port", "trade_broker_id",
         "market_front", "market_port", "market_broker_id",
     };
 
-    // config tags count / ÅäÖÃ±êÇ©ÊıÁ¿
+    // config tags count / é…ç½®æ ‡ç­¾æ•°é‡
     static const qint32 count_simnow_server = 6;
 
-    // hard-coded QString name for config tags ## Ó²coded QStringÅäÖÃÃû³Æ
+    // hard-coded QString name for config tags ## ç¡¬coded QStringé…ç½®åç§°
     const QString tags_simnow_server[count_simnow_server] = {
         "trade_front", "trade_port", "trade_broker_id",
         "market_front", "market_port", "market_broker_id",
     };
 
-    // config tags count / ÅäÖÃ±êÇ©ÊıÁ¿
+    // config tags count / é…ç½®æ ‡ç­¾æ•°é‡
     static const qint32 count_userinfo = 3;
 
-    // hard-coded QString name for config tags ## Ó²coded QStringÅäÖÃÃû³Æ
+    // hard-coded QString name for config tags ## ç¡¬coded QStringé…ç½®åç§°
     const QString tags_userinfo[count_userinfo] = {
         "username", "password", "test",
     };

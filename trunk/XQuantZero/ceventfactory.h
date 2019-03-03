@@ -4,8 +4,6 @@
 #include "cevent.h"
 #include "cabstractevent.h"
 
-using namespace xq_event;
-
 class CEventFactory
 {
 public:

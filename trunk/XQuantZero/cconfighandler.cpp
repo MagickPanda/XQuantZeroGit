@@ -42,7 +42,7 @@ bool CConfigHandler::loadConfig(QString filename) {
                     m_ConfigSimnow[ tags_simnow_server[j] ] = value;
                 }
                 continue;
-                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌĞøÑ­»·
+                //find match continue ## Ã•Ã’ÂµÂ½Ã†Â¥Ã…Ã¤Ã…Ã¤Ã–ÃƒÂ£Â¬Â¼ÃŒÃÃ¸Ã‘Â­Â»Â·
             }
 
             if (sections[i] == "ctp_server") {
@@ -52,7 +52,7 @@ bool CConfigHandler::loadConfig(QString filename) {
                     m_ConfigCTP[ tags_ctp_server[j] ] = value;
                 }
                 continue;
-                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌĞøÑ­»·
+                //find match continue ## Ã•Ã’ÂµÂ½Ã†Â¥Ã…Ã¤Ã…Ã¤Ã–ÃƒÂ£Â¬Â¼ÃŒÃÃ¸Ã‘Â­Â»Â·
             }
 
             if (sections[i] == "userinfo") {
@@ -62,7 +62,7 @@ bool CConfigHandler::loadConfig(QString filename) {
                     m_ConfigUserinfo[ tags_simnow_server[j] ] = value;
                 }
                 continue;
-                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌĞøÑ­»·
+                //find match continue ## Ã•Ã’ÂµÂ½Ã†Â¥Ã…Ã¤Ã…Ã¤Ã–ÃƒÂ£Â¬Â¼ÃŒÃÃ¸Ã‘Â­Â»Â·
             }
 
         }

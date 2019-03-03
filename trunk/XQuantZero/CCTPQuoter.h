@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _CCTPQuoter_H_
-#define _CCTPQuoter_H_
+#ifndef _CCTPQUOTER_H
+#define _CCTPQUOTER_H
 
 #include <iostream>
 #include <string>
@@ -21,33 +21,33 @@ using namespace std;
 
 //HANDLE  g_hEvent;
 //
-/////³·µ¥×éºÏÒ»
-/////±¨µ¥ÒıÓÃ
+/////æ’¤å•ç»„åˆä¸€
+/////æŠ¥å•å¼•ç”¨
 //TThostFtdcOrderRefType	OrderRef;
-/////»á»°±àºÅ
+/////ä¼šè¯ç¼–å·
 //TThostFtdcSessionIDType	SessionID;
-/////Ç°ÖÃ±àºÅ
+/////å‰ç½®ç¼–å·
 //TThostFtdcFrontIDType	FrontID;
 //
-/////³·µ¥×éºÏ¶ş
-/////½»Ò×Ëù´úÂë
+/////æ’¤å•ç»„åˆäºŒ
+/////äº¤æ˜“æ‰€ä»£ç 
 //TThostFtdcExchangeIDType	ExchangeID;
-/////±¨µ¥±àºÅ
+/////æŠ¥å•ç¼–å·
 //TThostFtdcOrderSysIDType	OrderSysID;
-/////ºÏÔ¼´úÂë
+/////åˆçº¦ä»£ç 
 //TThostFtdcInstrumentIDType	InstrumentID;
 //
-////ÓÃÓÚÉ¾³ıÔ¤Âñµ¥
-/////Ô¤Âñ±àºÅ
+////ç”¨äºåˆ é™¤é¢„åŸ‹å•
+/////é¢„åŸ‹ç¼–å·
 //TThostFtdcParkedOrderIDType	ParkedOrderID;
 
 class CCTPQuoter : public CThostFtdcMdSpi {
 public:
 	enum {
-		SUCCESS_POST = 0, ///<³É¹¦
-		FAILED_NETWORK = -1, ///<ÍøÂçÁ¬½ÓÊ§°Ü
-		FAILED_REACH_LIMITS = -2, ///<Î´´¦ÀíÇëÇó³¬¹ıĞí¿ÉÊı
-		FAILED_REACH_GRANTS = -3 ///<Ã¿Ãë·¢ËÍÇëÇó³¬¹ıĞí¿ÉÊı
+		SUCCESS_POST = 0, ///<æˆåŠŸ
+		FAILED_NETWORK = -1, ///<ç½‘ç»œè¿æ¥å¤±è´¥
+		FAILED_REACH_LIMITS = -2, ///<æœªå¤„ç†è¯·æ±‚è¶…è¿‡è®¸å¯æ•°
+		FAILED_REACH_GRANTS = -3 ///<æ¯ç§’å‘é€è¯·æ±‚è¶…è¿‡è®¸å¯æ•°
 	};
 
 	enum MSG_TYPE {
@@ -105,48 +105,48 @@ public:
         int getRequestID() { return reqId; };
 
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
         void OnFrontConnected();
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçĞ´Ê§°Ü
-	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
+	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+	///@param nReason é”™è¯¯åŸå› 
+	///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+	///        0x1002 ç½‘ç»œå†™å¤±è´¥
+	///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
+	///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+	///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
         void OnFrontDisconnected(int nReason);
 
-	///ĞÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
+	///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+	///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
         void OnHeartBeatWarning(int nTimeLapse);
 
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
+	///ç™»å½•è¯·æ±‚å“åº”
         void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///µÇ³öÇëÇóÏìÓ¦
+	///ç™»å‡ºè¯·æ±‚å“åº”
         void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///´íÎóÓ¦´ğ
+	///é”™è¯¯åº”ç­”
         void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///¶©ÔÄĞĞÇéÓ¦´ğ
+	///è®¢é˜…è¡Œæƒ…åº”ç­”
         void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ
+	///å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”
         void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///¶©ÔÄÑ¯¼ÛÓ¦´ğ
+	///è®¢é˜…è¯¢ä»·åº”ç­”
         void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
+	///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
         void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///Éî¶ÈĞĞÇéÍ¨Öª
+	///æ·±åº¦è¡Œæƒ…é€šçŸ¥
         void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
-	///Ñ¯¼ÛÍ¨Öª
+	///è¯¢ä»·é€šçŸ¥
         void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp);
 protected:
 
@@ -184,7 +184,7 @@ private:
 	/*string tradeIp;*/
 	string mdIp;
 
-	//ÇëÇó±àºÅ
+	//è¯·æ±‚ç¼–å·
 	int reqId;
 
 	MSG_LIST m_MsgList;

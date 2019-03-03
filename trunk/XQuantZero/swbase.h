@@ -137,98 +137,98 @@ enum {
 
 typedef int OS_OrderStatusType;
 enum {
-	OS_ST_INVALID = -1, ///<summary>����״̬��������ɾ����</summary> 
-	OS_ST_NONE, ///<summary>��ʼ״̬</summary>
-	OS_ST_INSERTING, ///<summary>�µ���</summary>
-	OS_ST_INSERTING_ACK, ///<summary>ȷ���µ�</summary>
-	OS_ST_INSERTED, ///<summary>���µ��ر�</summary>
-	OS_ST_CONFIRMED, ///<summary>�ɽ�</summary>
-	OS_ST_INSERT_CANCEL, ///<summary>ȡ���µ�</summary>
-	OS_ST_INSERT_CANCEL_ACK, ///<summary>ȷ��ȡ���µ�</summary>
-	OS_ST_INSERT_CANCELLED, ///<summary>��ȡ���µ�</summary>
-	OS_ST_CONFIRM_CANCEL, ///<summary>ȡ���ر���</summary>
-	OS_ST_CONFIRM_CANCEL_ACK, ///<summary>ȷ��ȡ���ر���</summary>
-	OS_ST_CONFIRM_CANCELLED, ///<summary>��ȡ���ر���</summary>
-	OS_ST_FINISHING, ///<summary>ƽ����</summary>
-	OS_ST_FINISHING_ACK, ///<summary>ȷ��ƽ��</summary>
-	OS_ST_FINISH_CANCEL, ///<summary>ȡ��ƽ��</summary>
-	OS_ST_FINISH_CANCEL_ACK, ///<summary>ȷ��ȡ��ƽ��</summary>
-	OS_ST_FINISH_CANCELLED, ///<summary>��ȡ��ƽ�ֵ�</summary>
-	OS_ST_FINISHED, ///<summary>ƽ�ֺ�</summary>
+	OS_ST_INVALID = -1, ///<summary>错误状态（单子已删除）</summary> 
+	OS_ST_NONE, ///<summary>初始状态</summary>
+	OS_ST_INSERTING, ///<summary>下单中</summary>
+	OS_ST_INSERTING_ACK, ///<summary>确认下单</summary>
+	OS_ST_INSERTED, ///<summary>已下单回报</summary>
+	OS_ST_CONFIRMED, ///<summary>成交</summary>
+	OS_ST_INSERT_CANCEL, ///<summary>取消下单</summary>
+	OS_ST_INSERT_CANCEL_ACK, ///<summary>确认取消下单</summary>
+	OS_ST_INSERT_CANCELLED, ///<summary>已取消下单</summary>
+	OS_ST_CONFIRM_CANCEL, ///<summary>取消回报单</summary>
+	OS_ST_CONFIRM_CANCEL_ACK, ///<summary>确认取消回报单</summary>
+	OS_ST_CONFIRM_CANCELLED, ///<summary>已取消回报单</summary>
+	OS_ST_FINISHING, ///<summary>平仓中</summary>
+	OS_ST_FINISHING_ACK, ///<summary>确认平仓</summary>
+	OS_ST_FINISH_CANCEL, ///<summary>取消平仓</summary>
+	OS_ST_FINISH_CANCEL_ACK, ///<summary>确认取消平仓</summary>
+	OS_ST_FINISH_CANCELLED, ///<summary>已取消平仓单</summary>
+	OS_ST_FINISHED, ///<summary>平仓后</summary>
 
-	OS_ST_INSERT_FAIL, ///<summary>����ʧ��</summary>
-	OS_ST_FINISH_FAIL, ///<summary>ƽ��ʧ��</summary>
-	//OS_ST_INVALID, ///<summary>����״̬</summary>
+	OS_ST_INSERT_FAIL, ///<summary>开仓失败</summary>
+	OS_ST_FINISH_FAIL, ///<summary>平仓失败</summary>
+	//OS_ST_INVALID, ///<summary>错误状态</summary>
 };
 
 static const int OS_ST_STRING_SIZE = 20;
 
 static const char* os_st_table[20] = {
-	"��״̬","�µ���","ȷ���µ�","�ɽ�ȷ����","�ɽ�","ȡ���µ�",
-	"ȷ��ȡ���µ�","��ȡ���µ�","ȡ���ر���","ȷ��ȡ���ر���","��ȡ���ر���",
-	"ƽ����","ȷ��ƽ��","ȡ��ƽ��","ȷ��ȡ��ƽ��","��ȡ��ƽ�ֵ�","ƽ�ֺ�",
-	"����ʧ��", "ƽ��ʧ��","����״̬",
+	"无状态","下单中","确认下单","成交确认中","成交","取消下单",
+	"确认取消下单","已取消下单","取消回报单","确认取消回报单","已取消回报单",
+	"平仓中","确认平仓","取消平仓","确认取消平仓","已取消平仓单","平仓后",
+	"开仓失败", "平仓失败","错误状态",
 
 };
 
 static const int OS_STRING_SIZE = 38;
 
-static const char* os_string_index = "��������";
+static const char* os_string_index = "订单参数";
 
 static const char* os_string_table[OS_STRING_SIZE] = {
-	"reqID1", "reqID2", "��ϱ�־",
-	"��Ʒ1", "�ֲ�1", "����1", "�۸�1", "�۸�1ֹӯ", "�۸�1ֹ��",
-	"��Ʒ2", "�ֲ�2", "����2", "�۸�2", "�۸�2ֹӯ", "�۸�2ֹ��",
-	"��ϼ۲�", "���ֹӯ", "���ֹ��", "�û��˺�", "����״̬",
+	"reqID1", "reqID2", "组合标志",
+	"产品1", "持仓1", "方向1", "价格1", "价格1止盈", "价格1止损",
+	"产品2", "持仓2", "方向2", "价格2", "价格2止盈", "价格2止损",
+	"组合价差", "组合止盈", "组合止损", "用户账号", "单子状态",
 	"OrderRef1", "SessionID1", "FrontID1", "ExchangeID1", "OrderSysID1",
 	"OrderRef2", "SessionID2", "FrontID2", "ExchangeID2", "OrderSysID2",
-	"��������", "����ʱ��", "���ʱ��", "����ʱ��", "����ʱ��", "����ʱ��",
-	"ֹͣʱ��", "��������"
+	"插入日期", "插入时间", "完成时间", "激活时间", "更新时间", "撤销时间",
+	"停止时间", "单子类型"
 };
 
 typedef struct order_struct {
 	unsigned int reqID1; ///<reqID1 1
 	unsigned int reqID2; ///<reqID2 2
 	bool bDiff; ///<if a diff 3
-	string product1; ///<��Ʒ1���� 4
-	int quantity1; ///<��Ʒ1���� 5
-	int dir1; ///<����1 6
-	double price1; ///<�۸�1 7
-	double price1_target; ///<�۸�1Ŀ�� 8
-	double price1_fail; ///<�۸�1ֹ�� 9
-	string product2; ///<��Ʒ2���� 10
-	int quantity2; ///<��Ʒ2���� 11
-	int dir2; ///<����2 12
-	double price2; ///<�۸�2 13
-	double price2_target; ///<�۸�2Ŀ�� 14
-	double price2_fail; ///<�۸�2ֹ�� 15
-	double diff; ///�볡�۲� 16
-	double diff_target; ///<�۲�Ŀ�� 17
-	double diff_fail; ///<�۲�ֹ�� 18
+	string product1; ///<产品1名称 4
+	int quantity1; ///<产品1数量 5
+	int dir1; ///<方向1 6
+	double price1; ///<价格1 7
+	double price1_target; ///<价格1目标 8
+	double price1_fail; ///<价格1止损 9
+	string product2; ///<产品2名称 10
+	int quantity2; ///<产品2数量 11
+	int dir2; ///<方向2 12
+	double price2; ///<价格2 13
+	double price2_target; ///<价格2目标 14
+	double price2_fail; ///<价格2止损 15
+	double diff; ///入场价差 16
+	double diff_target; ///<价差目标 17
+	double diff_fail; ///<价差止损 18
 
-	string user_ID; ///<��¼�˻� 19
-	OS_OrderStatusType type; ///<���� 0�ҵ� 1�ɽ� 2���� 3���� 20
+	string user_ID; ///<登录账户 19
+	OS_OrderStatusType type; ///<类型 0挂单 1成交 2运行 3撤单 20
 
-	char OrderRef1[13]; ///<����Ref1 21
-	int SessionID1; ///<����SessionID1 22
-	int FrontID1; ///<����FrontID1 23
-	char ExchangeID1[9]; ///<����ExchangeID1 24
-	char OrderSysID1[21]; ///<����OrderSysID! 25
+	char OrderRef1[13]; ///<单子Ref1 21
+	int SessionID1; ///<单子SessionID1 22
+	int FrontID1; ///<单子FrontID1 23
+	char ExchangeID1[9]; ///<单子ExchangeID1 24
+	char OrderSysID1[21]; ///<单子OrderSysID! 25
 
-	char OrderRef2[13]; ///<����Ref2 26
-	int SessionID2; ///<����SessionID2 27
-	int FrontID2; ///<����FrontID2 28
-	char ExchangeID2[9]; ///<����ExchangeID2 29
-	char OrderSysID2[21]; ///<����OrderSysID2 30
+	char OrderRef2[13]; ///<单子Ref2 26
+	int SessionID2; ///<单子SessionID2 27
+	int FrontID2; ///<单子FrontID2 28
+	char ExchangeID2[9]; ///<单子ExchangeID2 29
+	char OrderSysID2[21]; ///<单子OrderSysID2 30
 
-	char InsertDate[30]; ///<�������� 31
-	char InsertTime[36]; ///<����ʱ�� 32
-	char FinishTime[36]; ///<���ʱ�� 33
-	char ActiveTime[36]; ///<����ʱ�� 34
-	char UpdateTime[36]; ///<����ʱ�� 35
-	char CancelTime[36]; ///<����ʱ�� 36
-	char SuspendTime[36]; ///<ֹͣʱ�� 37
-	char OrderType[36]; ///<�������� 38
+	char InsertDate[30]; ///<插入日期 31
+	char InsertTime[36]; ///<插入时间 32
+	char FinishTime[36]; ///<完成时间 33
+	char ActiveTime[36]; ///<激活时间 34
+	char UpdateTime[36]; ///<更新时间 35
+	char CancelTime[36]; ///<撤销时间 36
+	char SuspendTime[36]; ///<停止时间 37
+	char OrderType[36]; ///<单子类型 38
 };
 
 #define SW_LEN_EXCHANGE 8
@@ -237,28 +237,28 @@ typedef struct order_struct {
 
 typedef struct SW_BAR
 {
-	//char                    exchange[SW_LEN_EXCHANGE];       ///<����������
-	//char                    sec_id[SW_LEN_SECID];            ///<֤ȯID
-	//int                     bar_type;                     ///<��ʱ��������(enum BarType)
-	double                  utc_time;                     ///bar�Ŀ�ʼʱ��
-	char                    strtime[SW_LEN_ISO_DATATIME];    ///bar�Ŀ�ʼʱ��
-	double                  utc_endtime;                  ///bar�Ľ���ʱ��
-	char                    strendtime[SW_LEN_ISO_DATATIME]; ///bar�Ľ���ʱ��
+	//char                    exchange[SW_LEN_EXCHANGE];       ///<交易所代码
+	//char                    sec_id[SW_LEN_SECID];            ///<证券ID
+	//int                     bar_type;                     ///<分时周期类型(enum BarType)
+	double                  utc_time;                     ///bar的开始时间
+	char                    strtime[SW_LEN_ISO_DATATIME];    ///bar的开始时间
+	double                  utc_endtime;                  ///bar的结束时间
+	char                    strendtime[SW_LEN_ISO_DATATIME]; ///bar的结束时间
 
-	float                   open;                         ///<���̼�
-	float                   close;                        ///<���̼�
-	float                   high;                         ///<��߼�
-	float                   low;                          ///<��ͼ�
-	double                  volume;                       ///<�ɽ���
-	double                  amount;                       ///<�ɽ����
-	float                   pre_close;                    ///ǰ���̼�
+	float                   open;                         ///<开盘价
+	float                   close;                        ///<收盘价
+	float                   high;                         ///<最高价
+	float                   low;                          ///<最低价
+	double                  volume;                       ///<成交量
+	double                  amount;                       ///<成交金额
+	float                   pre_close;                    ///前收盘价
 
-	long long                position;                    ///<�ֲ���
-	float                   adj_factor;                   //��Ȩ����
-	int                     flag;                         //��Ȩ��Ϣ��ͣ�Ƶȱ��
+	long long                position;                    ///<持仓量
+	float                   adj_factor;                   //复权因子
+	int                     flag;                         //除权出息，停牌等标记
 
-	double					bid; //���
-	double					ask; //����
+	double					bid; //买价
+	double					ask; //卖价
 } SWBar;
 
 template <class Type>
@@ -312,14 +312,14 @@ public:
 		product = "NONE";
 		direction = -1;
 		runs = 0;
-		insert_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		insert_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		insert_ack_timeouts = INSERT_ACK_TIMEOUTS;
-		insert_cancel_timeouts = INSERT_CANCEL_TIMEOUTS; ///<4�Σ��൱��2��
-		finish_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		insert_cancel_timeouts = INSERT_CANCEL_TIMEOUTS; ///<4次，相当于2秒
+		finish_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		finish_ack_timeouts = INSERT_ACK_TIMEOUTS;
-		finish_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
-		confirm_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
-		confirm_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		finish_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
+		confirm_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
+		confirm_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		memset(insertOrderRef1, 0, 13);
 		memset(insertOrderRef2, 0, 13);
 		memset(finishOrderRef1, 0, 13);
@@ -351,14 +351,14 @@ public:
 
 	void reset(void) {
 		runs = 0;
-		insert_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		insert_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		insert_ack_timeouts = INSERT_ACK_TIMEOUTS;
-		insert_cancel_timeouts = INSERT_CANCEL_TIMEOUTS; ///<4�Σ��൱��2��
-		finish_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		insert_cancel_timeouts = INSERT_CANCEL_TIMEOUTS; ///<4次，相当于2秒
+		finish_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		finish_ack_timeouts = INSERT_ACK_TIMEOUTS;
-		finish_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
-		confirm_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
-		confirm_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4�Σ��൱��2��
+		finish_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
+		confirm_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
+		confirm_cancel_timeouts = DEFAULT_TIMEOUTS; ///<4次，相当于2秒
 		memset(insertOrderRef1, 0, 13);
 		memset(insertOrderRef2, 0, 13);
 		memset(finishOrderRef1, 0, 13);
@@ -464,7 +464,7 @@ public:
 	double fail_price;
 	double win_price;
 
-	int insert_timeouts; ///<�ɽ�ʧ�ܴ������ƣ�����ʱ������������
+	int insert_timeouts; ///<成交失败次数限制，到达时放弃策略重置
 	int insert_ack_timeouts;
 	int insert_cancel_timeouts;
 	int finish_timeouts;
@@ -476,22 +476,22 @@ public:
 
 
 	/* Group status */
-	int insertID; ///<�µ�ID���û���
-	int finishID; ///<ƽ��ID���û���
+	int insertID; ///<下单ID（用户）
+	int finishID; ///<平仓ID（用户）
 
 	char insertOrderRef1[13];
 	char insertOrderRef2[13];
 	char finishOrderRef1[13];
 	char finishOrderRef2[13];
 
-	OS_OrderStatusType status; ///<����״̬������ɽ������
+	OS_OrderStatusType status; ///<订单状态，挂起成交或完成
 
 	//block for order info
 
 
-	char InsertDate[30]; ///<�������� 31
-	int SessionID1; ///<����SessionID1 22
-	int FrontID1; ///<����FrontID1 23
+	char InsertDate[30]; ///<插入日期 31
+	int SessionID1; ///<单子SessionID1 22
+	int FrontID1; ///<单子FrontID1 23
 	/* End */
 
 	//block for new status 
@@ -505,9 +505,9 @@ public:
 static const int MAX_STRAT_SLOTS = 10;
 
 enum {
-	STRAT_NONE = 0, ///<summary>�޲���< / summary>
-	STRAT_MA = 1, ///<summary>���߲���< / summary>
-	STRAT_KA = 2, ///<summary>KA����< / summary>
+	STRAT_NONE = 0, ///<summary>无策略< / summary>
+	STRAT_MA = 1, ///<summary>均线策略< / summary>
+	STRAT_KA = 2, ///<summary>KA策略< / summary>
 };
 
 typedef struct strat_s {
