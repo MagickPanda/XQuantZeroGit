@@ -55,6 +55,16 @@ bool CConfigHandler::loadConfig(QString filename) {
                 //find match continue ## Ã•Ã’ÂµÂ½Ã†Â¥Ã…Ã¤Ã…Ã¤Ã–ÃƒÂ£Â¬Â¼ÃŒÃÃ¸Ã‘Â­Â»Â·
             }
 
+            if (sections[i] == "ctp_server") {
+                for (j = 0;j < count_simnow_server;j++) {
+                    QString value = subObj[ tags_ctp_server[j] ].toString();
+                    qDebug() << tags_ctp_server[j] << " is:" << value;
+                    m_ConfigCTP[ tags_ctp_server[j] ] = value;
+                }
+                continue;
+                //find match continue ## ÕÒµ½Æ¥ÅäÅäÖÃ£¬¼ÌĞøÑ­»·
+            }
+
             if (sections[i] == "userinfo") {
                 for (j = 0;j < count_userinfo;j++) {
                     QString value = subObj[ tags_userinfo[j] ].toString();

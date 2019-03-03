@@ -1,4 +1,8 @@
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.h
 ï»¿#pragma once
+=======
+#pragma once
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.h
 #ifndef _CCTPTrader_H_
 #define _CCTPTrader_H_
 
@@ -43,7 +47,11 @@ using namespace std;
 //TThostFtdcParkedOrderIDType	ParkedOrderID;
 
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.h
 ///TODO: åŠ å…¥CurOrderRefé”ï¼Œé¿å…å†²çª
+=======
+///TODO: ¼ÓÈëCurOrderRefËø£¬±ÜÃâ³åÍ»
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.h
 class CCTPTrader : public CThostFtdcTraderSpi {
 public:
 	enum {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD:trunk/XQuantZero/CCTPQuoter.h
 ﻿#pragma once
+=======
+#pragma once
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPQuoter.h
 #ifndef _CCTPQuoter_H_
 #define _CCTPQuoter_H_
 

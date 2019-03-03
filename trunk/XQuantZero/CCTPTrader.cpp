@@ -1,6 +1,10 @@
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ï»¿#include "CCTPTrader.h"
 #include "cctpshared.h"
 
+=======
+#include "CCTPTrader.h"
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -9,8 +13,11 @@
 #endif
 #endif
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 
 
+=======
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 //CCTPTrader::~CCTPTrader() {
 //    //tradeApi->Join();
 //    tradeApi->Release();
@@ -19,13 +26,18 @@
 //}
 
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///Inline utility function to convert result code into QString ## inlineå‡½æ•°å°†CTPè¿”å›žå€¼è½¬æ¢ä¸ºQString
+=======
+///Inline utility function to convert result code into QString ## inlineº¯Êý½«CTP·µ»ØÖµ×ª»»ÎªQString
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 inline QString resultString(int code) {
     // TODO: Change magic string into variable/external string
 
     QString sResult;
     switch (code) {
         case CCTPTrader::SUCCESS_POST:
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
             sResult = "ç™»é™†æˆåŠŸã€‚\n";
             break;
         case CCTPTrader::FAILED_NETWORK:
@@ -39,6 +51,21 @@ inline QString resultString(int code) {
             break;
         default:
             sResult.append("æœªçŸ¥ç™»é™†å¤±è´¥ ");
+=======
+            sResult = "µÇÂ½³É¹¦¡£\n";
+            break;
+        case CCTPTrader::FAILED_NETWORK:
+            sResult = "µÇÂ½ÍøÂçÁ¬½ÓÊ§°Ü¡£\n";
+            break;
+        case CCTPTrader::FAILED_REACH_LIMITS:
+            sResult = "µÇÂ½Î´´¦ÀíÇëÇó³¬¹ýÐí¿ÉÊý¡£\n";
+            break;
+        case CCTPTrader::FAILED_REACH_GRANTS:
+            sResult = "µÇÂ½Ã¿Ãë·¢ËÍÇëÇó³¬¹ýÐí¿ÉÊý¡£\n";
+            break;
+        default:
+            sResult.append("Î´ÖªµÇÂ½Ê§°Ü ");
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
             sResult.append("CodeID:");
             sResult.append(code);
             sResult.append(" \n");
@@ -122,7 +149,11 @@ int CCTPTrader::queryPos() {
 	return iResult;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///TODO: ENG:add queryHold ## ä¸­ï¼š åŠ å…¥queryHoldå®žä½“
+=======
+///TODO: ENG:add queryHold ## ÖÐ£º ¼ÓÈëqueryHoldÊµÌå
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 int CCTPTrader::queryHold() {
     return -1;
 }
@@ -433,7 +464,11 @@ int  CCTPTrader::insertAction(string instrumentID, int price, int volume, int co
 	return iResult;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æ’¤å•
+=======
+///³·µ¥
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 int CCTPTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string InstrumentID)
 {
 	CThostFtdcInputOrderActionField InputOrderAction;
@@ -544,7 +579,11 @@ int  CCTPTrader::queryDepthData(string instrumentID)
 }
 
 int CCTPTrader::qryTradingAccount() {
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 	string sMsg("æ­£åœ¨èŽ·å–è¡Œæƒ…ï¼š");
+=======
+	string sMsg("ÕýÔÚ»ñÈ¡ÐÐÇé£º");
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 
 	CThostFtdcQryTradingAccountField QryTradingAccount;
 	memset(&QryTradingAccount, 0, sizeof(QryTradingAccount));
@@ -571,7 +610,11 @@ void CCTPTrader::tick(void) {
 	
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///ç»“ç®—ç»“æžœç¡®è®¤
+=======
+///½áËã½á¹ûÈ·ÈÏ
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::settleConfirm(void)
 {
 	CThostFtdcSettlementInfoConfirmField SettlementInfoConfirm;
@@ -644,7 +687,11 @@ void CCTPTrader::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUse
 	std::cerr << "--->>> " << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///é”™è¯¯åº”ç­”
+=======
+///´íÎóÓ¦´ð
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
@@ -652,7 +699,11 @@ void CCTPTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bo
 		<< std::endl;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ¥å•å½•å…¥è¯·æ±‚å“åº”
+=======
+///±¨µ¥Â¼ÈëÇëÇóÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pRspInfo) {
@@ -671,7 +722,11 @@ void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThost
     //for (; it != //g_Frame->m_order_list.end(); it++) {
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ•èµ„è€…ç»“ç®—ç»“æžœç¡®è®¤å“åº”
+=======
+///Í¶×ÊÕß½áËã½á¹ûÈ·ÈÏÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
@@ -680,7 +735,11 @@ void CCTPTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField
 	std::cerr << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ¥å•é€šçŸ¥
+=======
+///±¨µ¥Í¨Öª
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 {
 	//strcpy(InstrumentID, pOrder->InstrumentID);
@@ -697,7 +756,11 @@ void CCTPTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æˆäº¤é€šçŸ¥
+=======
+///³É½»Í¨Öª
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -708,7 +771,11 @@ void CCTPTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ¥å•å½•å…¥é”™è¯¯å›žæŠ¥
+=======
+///±¨µ¥Â¼Èë´íÎó»Ø±¨
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -751,7 +818,11 @@ void CCTPTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CTh
 #endif
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ¥å•æ“ä½œé”™è¯¯å›žæŠ¥
+=======
+///±¨µ¥²Ù×÷´íÎó»Ø±¨
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -775,7 +846,11 @@ void CCTPTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, C
 #endif
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///æŠ¥å•æ“ä½œè¯·æ±‚å“åº”
+=======
+///±¨µ¥²Ù×÷ÇëÇóÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (!pRspInfo) {
@@ -988,7 +1063,11 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 	
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“å“åº”
+=======
+///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -997,14 +1076,22 @@ void CCTPTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInve
 	//g_Frame->RecvPositionInfo(pInvestorPosition, pRspInfo, nRequestID);
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢è¡Œæƒ…å“åº”
+=======
+///ÇëÇó²éÑ¯ÐÐÇéÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InstrumentID: " << pDepthMarketData->InstrumentID << " UpdateTime: " << pDepthMarketData->UpdateTime << std::endl;
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///é¢„åŸ‹å•å½•å…¥è¯·æ±‚å“åº”
+=======
+///Ô¤Âñµ¥Â¼ÈëÇëÇóÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//strcpy(InstrumentID, pParkedOrder->InstrumentID);
@@ -1018,7 +1105,11 @@ void CCTPTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder
 	}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///é¢„åŸ‹æ’¤å•æ“ä½œè¯·æ±‚å“åº”
+=======
+///Ô¤Âñ³·µ¥²Ù×÷ÇëÇóÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1030,7 +1121,11 @@ void CCTPTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParke
 	}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///åˆ é™¤é¢„åŸ‹å•å“åº”
+=======
+///É¾³ýÔ¤Âñµ¥ÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1042,7 +1137,11 @@ void CCTPTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemov
 	}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///åˆ é™¤é¢„åŸ‹æ’¤å•å“åº”
+=======
+///É¾³ýÔ¤Âñ³·µ¥ÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1052,7 +1151,11 @@ void CCTPTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionF
 	}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
+=======
+///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pOrder == NULL) {
@@ -1075,7 +1178,11 @@ void CCTPTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoFi
 	//}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢æˆäº¤å“åº”
+=======
+///ÇëÇó²éÑ¯³É½»ÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pTrade == NULL) {
@@ -1099,7 +1206,11 @@ void CCTPTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoFi
 	//}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·å“åº”
+=======
+///ÇëÇó²éÑ¯×Ê½ðÕË»§ÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1126,7 +1237,11 @@ void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingA
 	}
 }
 
+<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
 ///è¯·æ±‚æŸ¥è¯¢åˆçº¦æ‰‹ç»­è´¹çŽ‡å“åº”
+=======
+///ÇëÇó²éÑ¯ºÏÔ¼ÊÖÐø·ÑÂÊÏìÓ¦
+>>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	;
