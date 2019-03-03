@@ -42,14 +42,11 @@ SOURCES += \
     cevent.cpp \
     cctpevent.cpp \
     CCTPTrader.cpp \
-<<<<<<< HEAD
     CCTPQuoter.cpp \
     ceventfactory.cpp \
     cctpeventfactory.cpp \
-    cabstractevent.cpp
-=======
+cabstractevent.cpp \
     CCTPQuoter.cpp
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7
 
 HEADERS += \
         mainwindow.h \
@@ -70,15 +67,12 @@ HEADERS += \
     CCTPTraderMD.h \
     CCTPTraderRsp.h \
     CCTPQuery.h \
-<<<<<<< HEAD
     CCTPQuoter.h \
     ceventfactory.h \
     cctpeventfactory.h \
     cctpshared.h \
-    cabstractevent.h
-=======
-    CCTPQuoter.h
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7
+cabstractevent.h \
+CCTPQuoter.h
 
 FORMS += \
         mainwindow.ui \
