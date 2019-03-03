@@ -1,4 +1,4 @@
-ï»¿
+
 #pragma once
 #ifndef _TRADERMD_H_
 #define _TRADERMD_H_
@@ -8,48 +8,48 @@
 class CCTPTraderMD : public CThostFtdcMdSpi
 {
 public:
-	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
 	void OnFrontConnected();
 
-	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
-	///@param nReason é”™è¯¯åŸå› 
-	///        0x1001 ç½‘ç»œè¯»å¤±è´¥
-	///        0x1002 ç½‘ç»œå†™å¤±è´¥
-	///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
-	///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
-	///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
+	///@param nReason ´íÎóÔ­Òò
+	///        0x1001 ÍøÂç¶ÁÊ§°Ü
+	///        0x1002 ÍøÂçĞ´Ê§°Ü
+	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
+	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
+	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
 	void OnFrontDisconnected(int nReason);
 
-	///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
-	///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
+	///ĞÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
 	void OnHeartBeatWarning(int nTimeLapse);
 
 
-	///ç™»å½•è¯·æ±‚å“åº”
+	///µÇÂ¼ÇëÇóÏìÓ¦
 	void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ç™»å‡ºè¯·æ±‚å“åº”
+	///µÇ³öÇëÇóÏìÓ¦
 	void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///é”™è¯¯åº”ç­”
+	///´íÎóÓ¦´ğ
 	void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è®¢é˜…è¡Œæƒ…åº”ç­”
+	///¶©ÔÄĞĞÇéÓ¦´ğ
 	void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”
+	///È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ
 	void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è®¢é˜…è¯¢ä»·åº”ç­”
+	///¶©ÔÄÑ¯¼ÛÓ¦´ğ
 	void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
+	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
 	void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///æ·±åº¦è¡Œæƒ…é€šçŸ¥
+	///Éî¶ÈĞĞÇéÍ¨Öª
 	void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
-	///è¯¢ä»·é€šçŸ¥
+	///Ñ¯¼ÛÍ¨Öª
 	void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp);
 private:
 

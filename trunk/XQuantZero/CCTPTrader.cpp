@@ -1,10 +1,4 @@
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-Ôªø#include "CCTPTrader.h"
-#include "cctpshared.h"
-
-=======
 #include "CCTPTrader.h"
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -13,11 +7,6 @@
 #endif
 #endif
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-
-
-=======
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 //CCTPTrader::~CCTPTrader() {
 //    //tradeApi->Join();
 //    tradeApi->Release();
@@ -26,32 +15,13 @@
 //}
 
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Inline utility function to convert result code into QString ## inlineÂáΩÊï∞Â∞ÜCTPËøîÂõûÂÄºËΩ¨Êç¢‰∏∫QString
-=======
 ///Inline utility function to convert result code into QString ## inline∫Ø ˝Ω´CTP∑µªÿ÷µ◊™ªªŒ™QString
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 inline QString resultString(int code) {
     // TODO: Change magic string into variable/external string
 
     QString sResult;
     switch (code) {
         case CCTPTrader::SUCCESS_POST:
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-            sResult = "ÁôªÈôÜÊàêÂäü„ÄÇ\n";
-            break;
-        case CCTPTrader::FAILED_NETWORK:
-            sResult = "ÁôªÈôÜÁΩëÁªúËøûÊé•Â§±Ë¥•„ÄÇ\n";
-            break;
-        case CCTPTrader::FAILED_REACH_LIMITS:
-            sResult = "ÁôªÈôÜÊú™Â§ÑÁêÜËØ∑Ê±ÇË∂ÖËøáËÆ∏ÂèØÊï∞„ÄÇ\n";
-            break;
-        case CCTPTrader::FAILED_REACH_GRANTS:
-            sResult = "ÁôªÈôÜÊØèÁßíÂèëÈÄÅËØ∑Ê±ÇË∂ÖËøáËÆ∏ÂèØÊï∞„ÄÇ\n";
-            break;
-        default:
-            sResult.append("Êú™Áü•ÁôªÈôÜÂ§±Ë¥• ");
-=======
             sResult = "µ«¬Ω≥…π¶°£\n";
             break;
         case CCTPTrader::FAILED_NETWORK:
@@ -65,7 +35,6 @@ inline QString resultString(int code) {
             break;
         default:
             sResult.append("Œ¥÷™µ«¬Ω ß∞‹ ");
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
             sResult.append("CodeID:");
             sResult.append(code);
             sResult.append(" \n");
@@ -82,7 +51,7 @@ int CCTPTrader::login() {
 	strcpy(loginField.Password, passwd.c_str());
 	strcpy(loginField.UserProductInfo, "ashu");
 
-	string sMsg("Ê≠£Âú®ÁôªÈôÜ„ÄÇ„ÄÇ„ÄÇ\n");
+	string sMsg("’˝‘⁄µ«¬Ω°£°£°£\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);
 	string sMsg2("USER ID: ");
@@ -101,11 +70,6 @@ int CCTPTrader::login() {
 	//g_Frame->writeLog(sResult, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sResult);
 
-    CEventQueue &eq = CEventQueue::getSingleton();
-
-
-    //eq.pushEvent(evtPointer);
-
 	return iResult;
 }
 
@@ -115,7 +79,7 @@ int CCTPTrader::logout() {
 	strcpy(userLogout.BrokerID, brokerId.c_str());
 	strcpy(userLogout.UserID, userId.c_str());
 
-	string sMsg("Ê≠£Âú®Ê≥®ÈîÄ„ÄÇ„ÄÇ„ÄÇ\n");
+	string sMsg("’˝‘⁄◊¢œ˙°£°£°£\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);;
 
@@ -134,7 +98,7 @@ int CCTPTrader::queryPos() {
 	strcpy(QryInvestorPosition.BrokerID, brokerId.c_str());
 	strcpy(QryInvestorPosition.InvestorID, userId.c_str());
 
-	string sMsg("Ê≠£Âú®Ëé∑ÂèñÊåÅ‰ªì„ÄÇ„ÄÇ„ÄÇ\n");
+	string sMsg("’˝‘⁄ªÒ»°≥÷≤÷°£°£°£\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
 	//wxTheApp->GetTopWindow()->CallAfter(&MyFrame::consoleOutput, sMsg);
 
@@ -149,24 +113,20 @@ int CCTPTrader::queryPos() {
 	return iResult;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///TODO: ENG:add queryHold ## ‰∏≠Ôºö Âä†ÂÖ•queryHoldÂÆû‰Ωì
-=======
 ///TODO: ENG:add queryHold ## ÷–£∫ º”»ÎqueryHold µÃÂ
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 int CCTPTrader::queryHold() {
     return -1;
 }
 
 int  CCTPTrader::insert(string instrumentID, int price, int volume, int code, int reqID)
 {
-	CThostFtdcInputOrderField inputOrder; //ÊèíÂÖ•Êä•ÂçïÊï∞ÊçÆ
+	CThostFtdcInputOrderField inputOrder; //≤Â»Î±®µ• ˝æ›
 	bool bInsert = false;
 
 	memset(&inputOrder, 0, sizeof(inputOrder));
 	//brokerid
 	strcpy(inputOrder.BrokerID, brokerId.c_str());
-	//ÊäïËµÑËÄÖ‰ª£Á†Å
+	//Õ∂◊ ’ﬂ¥˙¬Î
 	strcpy(inputOrder.InvestorID, userId.c_str());
 	strcpy(inputOrder.UserID, userId.c_str());
 
@@ -176,24 +136,24 @@ int  CCTPTrader::insert(string instrumentID, int price, int volume, int code, in
 	inputOrder.StopPrice = 0;
 	inputOrder.IsAutoSuspend = 0;
 
-	//‰ª∑Ê†ºÔºÅ
+	//º€∏Ò£°
 	inputOrder.LimitPrice = price;
 
 	inputOrder.VolumeTotalOriginal = volume;
-	//ÊúâÊïàÊúüÁ±ªÂûã --ÂΩìÊó•ÊúâÊïà
+	//”––ß∆⁄¿‡–Õ --µ±»’”––ß
 	inputOrder.TimeCondition = THOST_FTDC_TC_GFD;
 
 	strcpy(inputOrder.GTDDate, "");
-	//ÁªÑÂêàÊäïÊú∫Â•ó‰øùÊ†áÂøó
+	//◊È∫œÕ∂ª˙Ã◊±£±Í÷æ
 	inputOrder.CombHedgeFlag[0] = THOST_FTDC_HF_Speculation; 
 	//inputOrder.CombHedgeFlag[0] = THOST_FTDC_ECIDT_Hedge;
-	//Êàê‰∫§ÈáèÁ±ªÂûã ///‰ªª‰ΩïÊï∞Èáè THOST_FTDC_VC_AV '1' ///ÊúÄÂ∞èÊï∞Èáè THOST_FTDC_VC_MV '2' ///ÂÖ®ÈÉ®Êï∞Èáè THOST_FTDC_VC_CV '3'
+	//≥…Ωª¡ø¿‡–Õ ///»Œ∫Œ ˝¡ø THOST_FTDC_VC_AV '1' ///◊Ó–° ˝¡ø THOST_FTDC_VC_MV '2' ///»´≤ø ˝¡ø THOST_FTDC_VC_CV '3'
 	inputOrder.VolumeCondition = THOST_FTDC_VC_AV;
 
-	//Êä•‰ª∑Á±ªÂûã
-	inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice; //Èôê‰ª∑ÂçïÊ†áËØÜ
+	//±®º€¿‡–Õ
+	inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice; //œﬁº€µ•±Í ∂
 
-														   //Á´ãÂç≥Âçï
+														   //¡¢º¥µ•
 	inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately;
 	inputOrder.ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
 	inputOrder.UserForceClose = 0;
@@ -211,104 +171,104 @@ int  CCTPTrader::insert(string instrumentID, int price, int volume, int code, in
 
 	//enum {
 	//	ORDER_REVERSE = 0,
-	//	ORDER_OPEN_BUY = 1, ///<ÂºÄÂ§ö
-	//	ORDER_OPEN_SELL = 2, ///<ÂºÄÁ©∫ 
-	//	ORDER_CLOSE_BUY = 3, ///<Âπ≥Â§ö
-	//	ORDER_CLOSE_SELL = 4, ///<Âπ≥Á©∫
-	//	ORDER_FOK = 5, ///<Á´ãÂç≥Êàê‰∫§ÔºåÂê¶ÂàôÊí§ÈîÄ
-	//	ORDER_FAK = 6, ///<Á´ãÂç≥Êàê‰∫§ÔºåÂê¶ÂàôÊí§ÈîÄ
-	//	ORDER_CONDITION = 7, ///<Êù°‰ª∂‰øùÁïô
-	//	ORDER_ANYPRICE = 20, ///<Â∏Ç‰ª∑Âçï
-	//	ORDER_CONDITION_TOUCH = 30, ///<Ê≠¢Êçü
-	//	ORDER_CONDITION_TOUCHPROFIT = 31, ///<Ê≠¢Áõà
+	//	ORDER_OPEN_BUY = 1, ///<ø™∂‡
+	//	ORDER_OPEN_SELL = 2, ///<ø™ø’ 
+	//	ORDER_CLOSE_BUY = 3, ///<∆Ω∂‡
+	//	ORDER_CLOSE_SELL = 4, ///<∆Ωø’
+	//	ORDER_FOK = 5, ///<¡¢º¥≥…Ωª£¨∑Ò‘Ú≥∑œ˙
+	//	ORDER_FAK = 6, ///<¡¢º¥≥…Ωª£¨∑Ò‘Ú≥∑œ˙
+	//	ORDER_CONDITION = 7, ///<Ãıº˛±£¡Ù
+	//	ORDER_ANYPRICE = 20, ///< –º€µ•
+	//	ORDER_CONDITION_TOUCH = 30, ///<÷πÀ
+	//	ORDER_CONDITION_TOUCHPROFIT = 31, ///<÷π”Ø
 	//};
-	string code_type = "Á¨¶Âè∑Ôºö ";
+	string code_type = "∑˚∫≈£∫ ";
 	switch (code) {
 	case ORDER_OPEN_BUY:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Open;
-		code_type.append("ÂºÄÂ§ö");
+		code_type.append("ø™∂‡");
 		break;
 	case ORDER_OPEN_SELL:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Open;
-		code_type.append("ÂºÄÁ©∫");
+		code_type.append("ø™ø’");
 		break;
 	case ORDER_CLOSE_BUY:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Close;
-		code_type.append("Âπ≥Â§ö");
+		code_type.append("∆Ω∂‡");
 		break;
 	case ORDER_CLOSE_SELL:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Close;
-		code_type.append("Âπ≥Á©∫");
+		code_type.append("∆Ωø’");
 		break;
 	case ORDER_CLOSE_BUY_TODAY:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday;
-		code_type.append("Âπ≥‰ªäÂ§ö");
+		code_type.append("∆ΩΩÒ∂‡");
 		break;
 	case ORDER_CLOSE_SELL_TODAY:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday;
-		code_type.append("Âπ≥‰ªäÁ©∫");
+		code_type.append("∆ΩΩÒø’");
 		break;
 	case ORDER_CLOSE_BUY_YEST:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday;
-		code_type.append("Âπ≥Êò®Â§ö");
+		code_type.append("∆Ω◊Ú∂‡");
 		break;
 	case ORDER_CLOSE_SELL_YEST:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday;
-		code_type.append("Âπ≥Êò®Á©∫");
+		code_type.append("∆Ω◊Úø’");
 		break;
 	case ORDER_FOK:
-		inputOrder.TimeCondition = THOST_FTDC_TC_IOC; //Á´ãÂç≥Êàê‰∫§ÔºåÂê¶ÂàôÊí§ÈîÄ
-		inputOrder.VolumeCondition = THOST_FTDC_VC_AV; //~MVÈÉΩÂèØ‰ª•
+		inputOrder.TimeCondition = THOST_FTDC_TC_IOC; //¡¢º¥≥…Ωª£¨∑Ò‘Ú≥∑œ˙
+		inputOrder.VolumeCondition = THOST_FTDC_VC_AV; //~MV∂ºø…“‘
 		inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately;
 		code_type.append("FOK");
 		break;
 	case ORDER_FAK:
-		inputOrder.TimeCondition = THOST_FTDC_TC_IOC; //Á´ãÂç≥Êàê‰∫§ÔºåÂê¶ÂàôÊí§ÈîÄ
-		inputOrder.VolumeCondition = THOST_FTDC_VC_CV; //ÂÖ®ÈÉ®Êï∞Èáè
+		inputOrder.TimeCondition = THOST_FTDC_TC_IOC; //¡¢º¥≥…Ωª£¨∑Ò‘Ú≥∑œ˙
+		inputOrder.VolumeCondition = THOST_FTDC_VC_CV; //»´≤ø ˝¡ø
 		inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately;
 		code_type.append("FAK");
 		break;
 	case ORDER_CONDITION:
-		inputOrder.ContingentCondition = THOST_FTDC_CC_LastPriceGreaterThanStopPrice; //ÊúÄÊñ∞‰ª∑Â§ß‰∫éÊù°‰ª∂‰ª∑
-		code_type.append("ÈîôËØØÊù°‰ª∂Âçï");
+		inputOrder.ContingentCondition = THOST_FTDC_CC_LastPriceGreaterThanStopPrice; //◊Ó–¬º€¥Û”⁄Ãıº˛º€
+		code_type.append("¥ÌŒÛÃıº˛µ•");
 		break;
 	case ORDER_ANYPRICE:
-		//Â∏Ç‰ª∑Âçï
+		// –º€µ•
 		inputOrder.OrderPriceType = THOST_FTDC_OPT_AnyPrice;
 		inputOrder.LimitPrice = 0;
 		inputOrder.TimeCondition = THOST_FTDC_TC_IOC;
 		inputOrder.VolumeCondition = THOST_FTDC_VC_AV;
 		inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately;
-		code_type.append("Â∏Ç‰ª∑Âçï");
+		code_type.append(" –º€µ•");
 		break;
 	case ORDER_CONDITION_TOUCH:
 		inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice;
 		inputOrder.TimeCondition = THOST_FTDC_TC_GFD;
 		inputOrder.VolumeCondition = THOST_FTDC_VC_AV;
 		inputOrder.ContingentCondition = THOST_FTDC_CC_Touch;
-		code_type.append("Ê≠¢Êçü");
+		code_type.append("÷πÀ");
 		break;
 	case ORDER_CONDITION_TOUCHPROFIT:
 		inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice;
 		inputOrder.TimeCondition = THOST_FTDC_TC_GFD;
 		inputOrder.VolumeCondition = THOST_FTDC_VC_AV;
 		inputOrder.ContingentCondition = THOST_FTDC_CC_TouchProfit;
-		code_type.append("Ê≠¢Áõà");
+		code_type.append("÷π”Ø");
 		break;
 	default:
 		break;
 	}
 
 
-	string sMsg("Ê≠£Âú®‰∏ãÂçïÔºö");
+	string sMsg("’˝‘⁄œ¬µ•£∫");
 	sMsg.append(instrumentID);
 	sMsg.append("\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
@@ -328,13 +288,13 @@ int  CCTPTrader::insert(string instrumentID, int price, int volume, int code, in
 
 int  CCTPTrader::insert2(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
 {
-	CThostFtdcInputOrderField inputOrder; //ÊèíÂÖ•Êä•ÂçïÊï∞ÊçÆ
+	CThostFtdcInputOrderField inputOrder; //≤Â»Î±®µ• ˝æ›
 	bool bInsert = false;
 
 	memset(&inputOrder, 0, sizeof(inputOrder));
 	//brokerid
 	strcpy(inputOrder.BrokerID, brokerId.c_str());
-	//ÊäïËµÑËÄÖ‰ª£Á†Å
+	//Õ∂◊ ’ﬂ¥˙¬Î
 	strcpy(inputOrder.InvestorID, userId.c_str());
 	strcpy(inputOrder.UserID, userId.c_str());
 
@@ -348,62 +308,62 @@ int  CCTPTrader::insert2(string instrumentID, int price, int volume, int code, i
 	strcpy(inputOrder.ExchangeID, instrumentID.c_str());
 	inputOrder.RequestID = reqID;
 
-	//‰ª∑Ê†ºÔºÅ
+	//º€∏Ò£°
 	inputOrder.LimitPrice = price;
 
 	inputOrder.VolumeTotalOriginal = volume;
-	//ÊúâÊïàÊúüÁ±ªÂûã --ÂΩìÊó•ÊúâÊïà
+	//”––ß∆⁄¿‡–Õ --µ±»’”––ß
 	inputOrder.TimeCondition = THOST_FTDC_TC_GFD;
-	//ÁªÑÂêàÊäïÊú∫Â•ó‰øùÊ†áÂøó
+	//◊È∫œÕ∂ª˙Ã◊±£±Í÷æ
 	inputOrder.CombHedgeFlag[0] = THOST_FTDC_ECIDT_Hedge;
-	//Êàê‰∫§ÈáèÁ±ªÂûã ///‰ªª‰ΩïÊï∞Èáè THOST_FTDC_VC_AV '1' ///ÊúÄÂ∞èÊï∞Èáè THOST_FTDC_VC_MV '2' ///ÂÖ®ÈÉ®Êï∞Èáè THOST_FTDC_VC_CV '3'
+	//≥…Ωª¡ø¿‡–Õ ///»Œ∫Œ ˝¡ø THOST_FTDC_VC_AV '1' ///◊Ó–° ˝¡ø THOST_FTDC_VC_MV '2' ///»´≤ø ˝¡ø THOST_FTDC_VC_CV '3'
 	inputOrder.VolumeCondition = THOST_FTDC_VC_AV;
 
-	//Êä•‰ª∑Á±ªÂûã
-	inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice; //Èôê‰ª∑ÂçïÊ†áËØÜ
+	//±®º€¿‡–Õ
+	inputOrder.OrderPriceType = THOST_FTDC_OPT_LimitPrice; //œﬁº€µ•±Í ∂
 
-	inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately; //Á´ãÂç≥Âçï
+	inputOrder.ContingentCondition = THOST_FTDC_CC_Immediately; //¡¢º¥µ•
 	inputOrder.ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
 	inputOrder.UserForceClose = 0;
 
 
-	string code_type = "Á¨¶Âè∑Ôºö ";
+	string code_type = "∑˚∫≈£∫ ";
 	switch (code) {
 	case ORDER_CLOSE_BUY:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Close;
-		code_type.append("Âπ≥Â§ö");
+		code_type.append("∆Ω∂‡");
 		break;
 	case ORDER_CLOSE_SELL:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_Close;
-		code_type.append("Âπ≥Á©∫");
+		code_type.append("∆Ωø’");
 		break;
 	case ORDER_CLOSE_BUY_TODAY:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday;
-		code_type.append("Âπ≥‰ªäÂ§ö");
+		code_type.append("∆ΩΩÒ∂‡");
 		break;
 	case ORDER_CLOSE_SELL_TODAY:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday;
-		code_type.append("Âπ≥‰ªäÁ©∫");
+		code_type.append("∆ΩΩÒø’");
 		break;
 	case ORDER_CLOSE_BUY_YEST:
 		inputOrder.Direction = THOST_FTDC_D_Buy;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday;
-		code_type.append("Âπ≥Êò®Â§ö");
+		code_type.append("∆Ω◊Ú∂‡");
 		break;
 	case ORDER_CLOSE_SELL_YEST:
 		inputOrder.Direction = THOST_FTDC_D_Sell;
 		inputOrder.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday;
-		code_type.append("Âπ≥Êò®Á©∫");
+		code_type.append("∆Ω◊Úø’");
 		break;
 	default:
 		break;
 	}
 
-	string sMsg("Ê≠£Âú®Âπ≥‰ªìÔºö");
+	string sMsg("’˝‘⁄∆Ω≤÷£∫");
 	sMsg.append(instrumentID);
 	sMsg.append("\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
@@ -424,13 +384,13 @@ int  CCTPTrader::insert2(string instrumentID, int price, int volume, int code, i
 ///
 int  CCTPTrader::insertAction(string instrumentID, int price, int volume, int code, int reqID, int FrontID, int sessionID, string orderRef)
 {
-	CThostFtdcInputOrderActionField inputOrder; //ÊèíÂÖ•Êä•ÂçïÊï∞ÊçÆ
+	CThostFtdcInputOrderActionField inputOrder; //≤Â»Î±®µ• ˝æ›
 	bool bInsert = false;
 
 	memset(&inputOrder, 0, sizeof(inputOrder));
 	//brokerid
 	strcpy(inputOrder.BrokerID, brokerId.c_str());
-	//ÊäïËµÑËÄÖ‰ª£Á†Å
+	//Õ∂◊ ’ﬂ¥˙¬Î
 	strcpy(inputOrder.InvestorID, userId.c_str());
 	strcpy(inputOrder.UserID, userId.c_str());
 
@@ -449,7 +409,7 @@ int  CCTPTrader::insertAction(string instrumentID, int price, int volume, int co
 
 
 
-	string sMsg("Ê≠£Âú®Âπ≥‰ªìÔºö");
+	string sMsg("’˝‘⁄∆Ω≤÷£∫");
 	sMsg.append(instrumentID);
 	sMsg.append("\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
@@ -464,11 +424,7 @@ int  CCTPTrader::insertAction(string instrumentID, int price, int volume, int co
 	return iResult;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êí§Âçï
-=======
 ///≥∑µ•
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 int CCTPTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string InstrumentID)
 {
 	CThostFtdcInputOrderActionField InputOrderAction;
@@ -485,7 +441,7 @@ int CCTPTrader::orderAction(int FrontID, int SessionID, char* OrderRef, string I
 	//strcpy(InputOrderAction.OrderSysID, OrderSysID);
 
 	InputOrderAction.ActionFlag = THOST_FTDC_AF_Delete;
-	strcpy(InputOrderAction.InstrumentID, InstrumentID.c_str());  //Ëøô‰∏™ÊòØÂøÖÈ°ªÁöÑ
+	strcpy(InputOrderAction.InstrumentID, InstrumentID.c_str());  //’‚∏ˆ «±ÿ–Îµƒ
 	int iResult = tradeApi->ReqOrderAction(&InputOrderAction, ++reqId);
 
 	return iResult;
@@ -525,7 +481,7 @@ int CCTPTrader::queryOrderAction(string instrumentID, TThostFtdcOrderRefType ord
 	//strcpy(InputOrderAction.OrderSysID, OrderSysID);
 
 	InputOrderAction.ActionFlag = THOST_FTDC_AF_Delete;
-	strcpy(InputOrderAction.InstrumentID, instrumentID.c_str());  //Ëøô‰∏™ÊòØÂøÖÈ°ªÁöÑ
+	strcpy(InputOrderAction.InstrumentID, instrumentID.c_str());  //’‚∏ˆ «±ÿ–Îµƒ
 
 	int iResult;
 	iResult = tradeApi->ReqOrderAction(&InputOrderAction, reqID);
@@ -564,7 +520,7 @@ int  CCTPTrader::queryDepthData(string instrumentID)
 	strcpy(QryDepthMarketData.InstrumentID, instrumentID.c_str());
 	int iResult = tradeApi->ReqQryDepthMarketData(&QryDepthMarketData, ++reqId);
 
-	string sMsg("Ê≠£Âú®Ëé∑ÂèñË°åÊÉÖÔºö");
+	string sMsg("’˝‘⁄ªÒ»°––«È£∫");
 	sMsg.append(instrumentID);
 	sMsg.append("\n");
 	//g_Frame->writeLog(sMsg, LOG_TRADE);
@@ -579,11 +535,7 @@ int  CCTPTrader::queryDepthData(string instrumentID)
 }
 
 int CCTPTrader::qryTradingAccount() {
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-	string sMsg("Ê≠£Âú®Ëé∑ÂèñË°åÊÉÖÔºö");
-=======
 	string sMsg("’˝‘⁄ªÒ»°––«È£∫");
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 
 	CThostFtdcQryTradingAccountField QryTradingAccount;
 	memset(&QryTradingAccount, 0, sizeof(QryTradingAccount));
@@ -610,11 +562,7 @@ void CCTPTrader::tick(void) {
 	
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ÁªìÁÆóÁªìÊûúÁ°ÆËÆ§
-=======
 ///Ω·À„Ω·π˚»∑»œ
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::settleConfirm(void)
 {
 	CThostFtdcSettlementInfoConfirmField SettlementInfoConfirm;
@@ -625,7 +573,7 @@ void CCTPTrader::settleConfirm(void)
 
 void CCTPTrader::OnFrontConnected()
 {
-	//g_Frame->consoleOutput("‰∫§ÊòìÊúçÂä°Âô®Â∑≤ËøûÊé•„ÄÇ\n");
+	//g_Frame->consoleOutput("Ωª“◊∑˛ŒÒ∆˜“—¡¨Ω”°£\n");
 }
 
 void CCTPTrader::OnFrontDisconnected(int nReason)
@@ -687,11 +635,7 @@ void CCTPTrader::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUse
 	std::cerr << "--->>> " << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ÈîôËØØÂ∫îÁ≠î
-=======
 ///¥ÌŒÛ”¶¥
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
@@ -699,11 +643,7 @@ void CCTPTrader::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bo
 		<< std::endl;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êä•ÂçïÂΩïÂÖ•ËØ∑Ê±ÇÂìçÂ∫î
-=======
 ///±®µ•¬º»Î«Î«ÛœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pRspInfo) {
@@ -712,8 +652,8 @@ void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThost
 
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
 	std::cerr << "brokerID: " << pInputOrder->BrokerID << " UserID: " << pInputOrder->UserID
-		<< " instrumentId: " << pInputOrder->InstrumentID << " ‰π∞ÂçñÊñπÂêë: " << (pInputOrder->Direction == '0' ? "‰π∞" : "Âçñ")
-		<< " ÁªÑÂêàÂºÄÂπ≥Ê†áÂøó: " << (pInputOrder->CombOffsetFlag[0] == '0' ? "ÂºÄ‰ªì" : "Âπ≥‰ªì") << std::endl;
+		<< " instrumentId: " << pInputOrder->InstrumentID << " ¬Ú¬Ù∑ΩœÚ: " << (pInputOrder->Direction == '0' ? "¬Ú" : "¬Ù")
+		<< " ◊È∫œø™∆Ω±Í÷æ: " << (pInputOrder->CombOffsetFlag[0] == '0' ? "ø™≤÷" : "∆Ω≤÷") << std::endl;
 	std::cerr << "--->>> " << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 
 	string temp(pInputOrder->OrderRef);
@@ -722,11 +662,7 @@ void CCTPTrader::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThost
     //for (; it != //g_Frame->m_order_list.end(); it++) {
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ÊäïËµÑËÄÖÁªìÁÆóÁªìÊûúÁ°ÆËÆ§ÂìçÂ∫î
-=======
 ///Õ∂◊ ’ﬂΩ·À„Ω·π˚»∑»œœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>> " << __FUNCTION__ << std::endl;
@@ -735,11 +671,7 @@ void CCTPTrader::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField
 	std::cerr << "RspInfo: " << pRspInfo->ErrorMsg << std::endl;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êä•ÂçïÈÄöÁü•
-=======
 ///±®µ•Õ®÷™
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 {
 	//strcpy(InstrumentID, pOrder->InstrumentID);
@@ -756,11 +688,7 @@ void CCTPTrader::OnRtnOrder(CThostFtdcOrderField *pOrder)
 
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êàê‰∫§ÈÄöÁü•
-=======
 ///≥…ΩªÕ®÷™
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -771,11 +699,7 @@ void CCTPTrader::OnRtnTrade(CThostFtdcTradeField *pTrade)
 
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êä•ÂçïÂΩïÂÖ•ÈîôËØØÂõûÊä•
-=======
 ///±®µ•¬º»Î¥ÌŒÛªÿ±®
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -818,11 +742,7 @@ void CCTPTrader::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CTh
 #endif
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êä•ÂçïÊìç‰ΩúÈîôËØØÂõûÊä•
-=======
 ///±®µ•≤Ÿ◊˜¥ÌŒÛªÿ±®
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -846,11 +766,7 @@ void CCTPTrader::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, C
 #endif
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Êä•ÂçïÊìç‰ΩúËØ∑Ê±ÇÂìçÂ∫î
-=======
 ///±®µ•≤Ÿ◊˜«Î«ÛœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (!pRspInfo) {
@@ -863,7 +779,7 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 
 #if 0
 
-	// 25 = Êâæ‰∏çÂà∞Êí§Âçï
+	// 25 = ’“≤ªµΩ≥∑µ•
 	if (pRspInfo->ErrorID == 25) {
 		string temp(pInputOrderAction->OrderRef);
 
@@ -885,18 +801,18 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 
 
 				string t2(os_st_table[target.type]);
-				string t = "ÈîôËØØÊí§Âçï25ÔºàÊîπ‰∏∫Êó†Áä∂ÊÄÅÔºâ‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+				string t = "¥ÌŒÛ≥∑µ•25£®∏ƒŒ™Œﬁ◊¥Ã¨£©÷Æ«∞◊¥Ã¨£∫ {" + t2;
 				t.append("}\n");
 				//g_Frame->writeLog(t, LOG_ORDER);
 
-				// Êâæ‰∏çÂà∞Êîπ‰∏∫Êó†Áä∂ÊÄÅ
+				// ’“≤ªµΩ∏ƒŒ™Œﬁ◊¥Ã¨
 				target.type = OS_ST_NONE;
 				break;
 			}
 		}
 	}
 
-	// 26 = Â∑≤Êàê‰∫§ÊàñÂ∑≤Êí§ÈîÄ„ÄÇ„ÄÇ
+	// 26 = “—≥…ΩªªÚ“—≥∑œ˙°£°£
 	if (pRspInfo->ErrorID == 26) {
 		string temp(pInputOrderAction->OrderRef);
 
@@ -921,17 +837,17 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 					if (target.type == OS_ST_INSERT_CANCELLED ||
 						target.type == OS_ST_FINISH_CANCELLED) {
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 						break;
 					}
 
-					//ÂÖ®ÈÉ®Êàê‰∫§‰∏çËÉΩÊí§ÔºåÂàôÊîπ‰∏∫Êàê‰∫§
+					//»´≤ø≥…Ωª≤ªƒ‹≥∑£¨‘Ú∏ƒŒ™≥…Ωª
 					if (target.type == OS_ST_INSERT_CANCEL ||
 						target.type == OS_ST_INSERT_CANCEL_ACK) {
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 
@@ -944,7 +860,7 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 						target.type == OS_ST_FINISH_CANCEL_ACK) {
 
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 
@@ -985,7 +901,7 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 			}
 		}
 	} 
-	/// 25 Êâæ‰∏çÂà∞Êí§Âçï resets order status to default
+	/// 25 ’“≤ªµΩ≥∑µ• resets order status to default
 	else if (pRspInfo->ErrorID == 25) {
 		string temp(pInputOrderAction->OrderRef);
 
@@ -1010,17 +926,17 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 					if (target.type == OS_ST_INSERT_CANCELLED ||
 						target.type == OS_ST_FINISH_CANCELLED) {
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 						break;
 					}
 
-					//ÂÖ®ÈÉ®Êàê‰∫§‰∏çËÉΩÊí§ÔºåÂàôÊîπ‰∏∫Êàê‰∫§
+					//»´≤ø≥…Ωª≤ªƒ‹≥∑£¨‘Ú∏ƒŒ™≥…Ωª
 					if (target.type == OS_ST_INSERT_CANCEL ||
 						target.type == OS_ST_INSERT_CANCEL_ACK) {
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 
@@ -1033,7 +949,7 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 						target.type == OS_ST_FINISH_CANCEL_ACK) {
 
 						string t2(os_st_table[target.type]);
-						string t = "ÈîôËØØÊí§Âçï‰πãÂâçÁä∂ÊÄÅÔºö {" + t2;
+						string t = "¥ÌŒÛ≥∑µ•÷Æ«∞◊¥Ã¨£∫ {" + t2;
 						t.append("}\n");
 						//g_Frame->writeLog(t, LOG_ORDER);
 
@@ -1063,35 +979,23 @@ void CCTPTrader::OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAc
 	
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢ÊäïËµÑËÄÖÊåÅ‰ªìÂìçÂ∫î
-=======
 ///«Î«Û≤È—ØÕ∂◊ ’ﬂ≥÷≤÷œÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//std::cerr << "--->>>" << __FUNCTION__ << std::endl;
-	//std::cerr << "‰ªäÊåÅ‰ªìÔºö" << pInvestorPosition->TodayPosition << " Êò®ÊåÅ‰ªìÔºö" << pInvestorPosition->YdPosition
-	//	<< " ÂêàÁ∫¶‰ª£Á†ÅÔºö" << pInvestorPosition->InstrumentID << " Âç†Áî®ÁöÑ‰øùËØÅÈáëÔºö" << pInvestorPosition->UseMargin << std::endl;
+	//std::cerr << "ΩÒ≥÷≤÷£∫" << pInvestorPosition->TodayPosition << " ◊Ú≥÷≤÷£∫" << pInvestorPosition->YdPosition
+	//	<< " ∫œ‘º¥˙¬Î£∫" << pInvestorPosition->InstrumentID << " ’º”√µƒ±£÷§Ω£∫" << pInvestorPosition->UseMargin << std::endl;
 	//g_Frame->RecvPositionInfo(pInvestorPosition, pRspInfo, nRequestID);
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢Ë°åÊÉÖÂìçÂ∫î
-=======
 ///«Î«Û≤È—Ø––«ÈœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
 	std::cerr << "InstrumentID: " << pDepthMarketData->InstrumentID << " UpdateTime: " << pDepthMarketData->UpdateTime << std::endl;
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///È¢ÑÂüãÂçïÂΩïÂÖ•ËØ∑Ê±ÇÂìçÂ∫î
-=======
 ///‘§¬Òµ•¬º»Î«Î«ÛœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	//strcpy(InstrumentID, pParkedOrder->InstrumentID);
@@ -1105,11 +1009,7 @@ void CCTPTrader::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder
 	}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///È¢ÑÂüãÊí§ÂçïÊìç‰ΩúËØ∑Ê±ÇÂìçÂ∫î
-=======
 ///‘§¬Ò≥∑µ•≤Ÿ◊˜«Î«ÛœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1121,11 +1021,7 @@ void CCTPTrader::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParke
 	}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Âà†Èô§È¢ÑÂüãÂçïÂìçÂ∫î
-=======
 ///…æ≥˝‘§¬Òµ•œÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1137,11 +1033,7 @@ void CCTPTrader::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemov
 	}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///Âà†Èô§È¢ÑÂüãÊí§ÂçïÂìçÂ∫î
-=======
 ///…æ≥˝‘§¬Ò≥∑µ•œÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1151,11 +1043,7 @@ void CCTPTrader::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionF
 	}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢Êä•ÂçïÂìçÂ∫î
-=======
 ///«Î«Û≤È—Ø±®µ•œÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pOrder == NULL) {
@@ -1178,11 +1066,7 @@ void CCTPTrader::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoFi
 	//}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢Êàê‰∫§ÂìçÂ∫î
-=======
 ///«Î«Û≤È—Ø≥…ΩªœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pTrade == NULL) {
@@ -1206,11 +1090,7 @@ void CCTPTrader::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoFi
 	//}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢ËµÑÈáëË¥¶Êà∑ÂìçÂ∫î
-=======
 ///«Î«Û≤È—Ø◊ Ω’ÀªßœÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	std::cerr << "--->>>" << __FUNCTION__ << std::endl;
@@ -1220,13 +1100,13 @@ void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingA
 	//	<< " Commission: " << pTradingAccount->Commission << " CloseProfit: " << pTradingAccount->CloseProfit
 	//	<< " PositionProfit: " << pTradingAccount->PositionProfit << std::endl;
 
-	test.append("Ë¥¶Âè∑ID  Ôºö");
+	test.append("’À∫≈ID  £∫");
 	test.append(pTradingAccount->AccountID);
 	test.append("\n");
-	test.append("ÂèØÁî®ËµÑÈáëÔºö");
+	test.append("ø…”√◊ Ω£∫");
 	test.append(  to_string(pTradingAccount->Available) );
 	test.append("\n");
-	test.append("‰øùËØÅËµÑÈáëÔºö");
+	test.append("±£÷§◊ Ω£∫");
 	test.append( to_string(pTradingAccount->Commission) );
 	test.append("\n");
 
@@ -1237,11 +1117,7 @@ void CCTPTrader::OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingA
 	}
 }
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.cpp
-///ËØ∑Ê±ÇÊü•ËØ¢ÂêàÁ∫¶ÊâãÁª≠Ë¥πÁéáÂìçÂ∫î
-=======
 ///«Î«Û≤È—Ø∫œ‘º ÷–¯∑—¬ œÏ”¶
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.cpp
 void CCTPTrader::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	;

@@ -1,1 +1,6 @@
-﻿#include "cctpevent.h"
+#include "cctpevent.h"
+
+CCTPEvent::CCTPEvent()
+{
+
+}

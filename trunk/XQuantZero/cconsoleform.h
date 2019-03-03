@@ -1,4 +1,4 @@
-﻿#ifndef CCONSOLEFORM_H
+#ifndef CCONSOLEFORM_H
 #define CCONSOLEFORM_H
 
 #include <QWidget>

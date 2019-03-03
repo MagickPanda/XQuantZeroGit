@@ -1,2 +1,2 @@
-﻿#include "CBaseTrader.h"
+#include "CBaseTrader.h"
 

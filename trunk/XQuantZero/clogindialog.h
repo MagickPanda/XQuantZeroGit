@@ -1,4 +1,4 @@
-﻿#ifndef CLOGINDIALOG_H
+#ifndef CLOGINDIALOG_H
 #define CLOGINDIALOG_H
 
 #include <QDialog>

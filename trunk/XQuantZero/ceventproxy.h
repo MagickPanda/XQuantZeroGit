@@ -1,4 +1,4 @@
-﻿#ifndef CEVENTPROXY_H
+#ifndef CEVENTPROXY_H
 #define CEVENTPROXY_H
 
 #include <QThread>

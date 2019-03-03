@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #ifdef WIN32  
 #ifdef __cplusplus   
 	#define STDLL_EXPORT_C_DECL __declspec(dllexport)  

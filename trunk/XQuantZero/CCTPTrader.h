@@ -1,8 +1,4 @@
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.h
-ï»¿#pragma once
-=======
 #pragma once
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.h
 #ifndef _CCTPTrader_H_
 #define _CCTPTrader_H_
 
@@ -26,39 +22,35 @@ using namespace std;
 
 //HANDLE  g_hEvent;
 //
-/////æ’¤å•ç»„åˆä¸€
-/////æŠ¥å•å¼•ç”¨
+/////³·µ¥×éºÏÒ»
+/////±¨µ¥ÒıÓÃ
 //TThostFtdcOrderRefType	OrderRef;
-/////ä¼šè¯ç¼–å·
+/////»á»°±àºÅ
 //TThostFtdcSessionIDType	SessionID;
-/////å‰ç½®ç¼–å·
+/////Ç°ÖÃ±àºÅ
 //TThostFtdcFrontIDType	FrontID;
 //
-/////æ’¤å•ç»„åˆäºŒ
-/////äº¤æ˜“æ‰€ä»£ç 
+/////³·µ¥×éºÏ¶ş
+/////½»Ò×Ëù´úÂë
 //TThostFtdcExchangeIDType	ExchangeID;
-/////æŠ¥å•ç¼–å·
+/////±¨µ¥±àºÅ
 //TThostFtdcOrderSysIDType	OrderSysID;
-/////åˆçº¦ä»£ç 
+/////ºÏÔ¼´úÂë
 //TThostFtdcInstrumentIDType	InstrumentID;
 //
-////ç”¨äºåˆ é™¤é¢„åŸ‹å•
-/////é¢„åŸ‹ç¼–å·
+////ÓÃÓÚÉ¾³ıÔ¤Âñµ¥
+/////Ô¤Âñ±àºÅ
 //TThostFtdcParkedOrderIDType	ParkedOrderID;
 
 
-<<<<<<< HEAD:trunk/XQuantZero/CCTPTrader.h
-///TODO: åŠ å…¥CurOrderRefé”ï¼Œé¿å…å†²çª
-=======
 ///TODO: ¼ÓÈëCurOrderRefËø£¬±ÜÃâ³åÍ»
->>>>>>> ab98e7dd9ed769e848a163473480d9a715d19ba7:trunk/XQuantZero/CCTPTrader.h
 class CCTPTrader : public CThostFtdcTraderSpi {
 public:
 	enum {
-		SUCCESS_POST = 0, ///<æˆåŠŸ
-		FAILED_NETWORK = -1, ///<ç½‘ç»œè¿æ¥å¤±è´¥
-		FAILED_REACH_LIMITS = -2, ///<æœªå¤„ç†è¯·æ±‚è¶…è¿‡è®¸å¯æ•°
-		FAILED_REACH_GRANTS = -3 ///<æ¯ç§’å‘é€è¯·æ±‚è¶…è¿‡è®¸å¯æ•°
+		SUCCESS_POST = 0, ///<³É¹¦
+		FAILED_NETWORK = -1, ///<ÍøÂçÁ¬½ÓÊ§°Ü
+		FAILED_REACH_LIMITS = -2, ///<Î´´¦ÀíÇëÇó³¬¹ıĞí¿ÉÊı
+		FAILED_REACH_GRANTS = -3 ///<Ã¿Ãë·¢ËÍÇëÇó³¬¹ıĞí¿ÉÊı
 	};
 
 	enum MSG_TYPE {
@@ -72,16 +64,16 @@ public:
 
 	enum {
 		ORDER_REVERSE = 0,
-		ORDER_OPEN_BUY = 1, ///<å¼€å¤š
-		ORDER_OPEN_SELL = 2, ///<å¼€ç©º 
-		ORDER_CLOSE_BUY = 3, ///<å¹³å¤š
-		ORDER_CLOSE_SELL = 4, ///<å¹³ç©º
-		ORDER_FOK = 5, ///<ç«‹å³æˆäº¤ï¼Œå¦åˆ™æ’¤é”€
-		ORDER_FAK = 6, ///<ç«‹å³æˆäº¤ï¼Œå¦åˆ™æ’¤é”€
-		ORDER_CONDITION = 7, ///<æ¡ä»¶ä¿ç•™
-		ORDER_ANYPRICE = 20, ///<å¸‚ä»·å•
-		ORDER_CONDITION_TOUCH = 30, ///<æ­¢æŸ
-		ORDER_CONDITION_TOUCHPROFIT = 31, ///<æ­¢ç›ˆ
+		ORDER_OPEN_BUY = 1, ///<¿ª¶à
+		ORDER_OPEN_SELL = 2, ///<¿ª¿Õ 
+		ORDER_CLOSE_BUY = 3, ///<Æ½¶à
+		ORDER_CLOSE_SELL = 4, ///<Æ½¿Õ
+		ORDER_FOK = 5, ///<Á¢¼´³É½»£¬·ñÔò³·Ïú
+		ORDER_FAK = 6, ///<Á¢¼´³É½»£¬·ñÔò³·Ïú
+		ORDER_CONDITION = 7, ///<Ìõ¼ş±£Áô
+		ORDER_ANYPRICE = 20, ///<ÊĞ¼Ûµ¥
+		ORDER_CONDITION_TOUCH = 30, ///<Ö¹Ëğ
+		ORDER_CONDITION_TOUCHPROFIT = 31, ///<Ö¹Ó¯
 		ORDER_CLOSE_BUY_TODAY,
 		ORDER_CLOSE_SELL_TODAY,
 		ORDER_CLOSE_BUY_YEST,
@@ -160,99 +152,99 @@ public:
         int getRequestID() { return reqId; };
 
 
-	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
         void OnFrontConnected();
 
-	///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
-	///@param nReason é”™è¯¯åŸå› 
-	///        0x1001 ç½‘ç»œè¯»å¤±è´¥
-	///        0x1002 ç½‘ç»œå†™å¤±è´¥
-	///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
-	///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
-	///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
+	///@param nReason ´íÎóÔ­Òò
+	///        0x1001 ÍøÂç¶ÁÊ§°Ü
+	///        0x1002 ÍøÂçĞ´Ê§°Ü
+	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
+	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
+	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
         void OnFrontDisconnected(int nReason);
 
-	///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
-	///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
+	///ĞÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
         void OnHeartBeatWarning(int nTimeLapse);
 
-	///å®¢æˆ·ç«¯è®¤è¯å“åº”
+	///¿Í»§¶ËÈÏÖ¤ÏìÓ¦
         void OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
 
-	///ç™»å½•è¯·æ±‚å“åº”
+	///µÇÂ¼ÇëÇóÏìÓ¦
         void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ç™»å‡ºè¯·æ±‚å“åº”
+	///µÇ³öÇëÇóÏìÓ¦
         void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
+	///ÓÃ»§¿ÚÁî¸üĞÂÇëÇóÏìÓ¦
         void OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///é”™è¯¯åº”ç­”
+	///´íÎóÓ¦´ğ
         void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///æŠ¥å•å½•å…¥è¯·æ±‚å“åº”
+	///±¨µ¥Â¼ÈëÇëÇóÏìÓ¦
         void OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///æŠ•èµ„è€…ç»“ç®—ç»“æœç¡®è®¤å“åº”
+	///Í¶×ÊÕß½áËã½á¹ûÈ·ÈÏÏìÓ¦
         void OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///æŠ¥å•é€šçŸ¥
+	///±¨µ¥Í¨Öª
         void OnRtnOrder(CThostFtdcOrderField *pOrder);
 
-	///æˆäº¤é€šçŸ¥
+	///³É½»Í¨Öª
         void OnRtnTrade(CThostFtdcTradeField *pTrade);
 
-	///æŠ¥å•å½•å…¥é”™è¯¯å›æŠ¥
+	///±¨µ¥Â¼Èë´íÎó»Ø±¨
         void OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo);
 
-	///æŠ¥å•æ“ä½œé”™è¯¯å›æŠ¥
+	///±¨µ¥²Ù×÷´íÎó»Ø±¨
         void OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo);
 
-	///æŠ¥å•æ“ä½œè¯·æ±‚å“åº”
+	///±¨µ¥²Ù×÷ÇëÇóÏìÓ¦
         void OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“å“åº”
+	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÏìÓ¦
         void OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢è¡Œæƒ…å“åº”
+	///ÇëÇó²éÑ¯ĞĞÇéÏìÓ¦
         void OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///é¢„åŸ‹å•å½•å…¥è¯·æ±‚å“åº”
+	///Ô¤Âñµ¥Â¼ÈëÇëÇóÏìÓ¦
         void OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///é¢„åŸ‹æ’¤å•å½•å…¥è¯·æ±‚å“åº”
+	///Ô¤Âñ³·µ¥Â¼ÈëÇëÇóÏìÓ¦
         void OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///åˆ é™¤é¢„åŸ‹å•å“åº”
+	///É¾³ıÔ¤Âñµ¥ÏìÓ¦
         void OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///åˆ é™¤é¢„åŸ‹æ’¤å•å“åº”
+	///É¾³ıÔ¤Âñ³·µ¥ÏìÓ¦
         void OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
+	///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
         void OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢æˆäº¤å“åº”
+	///ÇëÇó²éÑ¯³É½»ÏìÓ¦
         void OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·å“åº”
+	///ÇëÇó²éÑ¯×Ê½ğÕË»§ÏìÓ¦
         void OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///è¯·æ±‚æŸ¥è¯¢åˆçº¦æ‰‹ç»­è´¹ç‡å“åº”
+	///ÇëÇó²éÑ¯ºÏÔ¼ÊÖĞø·ÑÂÊÏìÓ¦
         void OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TThostFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TThostFtdcSessionIDType	SessionID;
-	///æœ€å¤§æŠ¥å•å¼•ç”¨
+	///×î´ó±¨µ¥ÒıÓÃ
 	TThostFtdcOrderRefType	MaxOrderRef;
-	///å½“å‰æŠ¥å•å¼•ç”¨
+	///µ±Ç°±¨µ¥ÒıÓÃ
 	int CurOrderRefInt;
 	TThostFtdcOrderRefType	CurOrderRef;
-	///ä¸Šä¸€ä¸ªæŠ¥å•å¼•ç”¨
+	///ÉÏÒ»¸ö±¨µ¥ÒıÓÃ
 	TThostFtdcOrderRefType	LastOrderRef;
 
 
@@ -327,7 +319,7 @@ private:
 	string tradeIp;
 	/*string mdIp;*/
 
-	//è¯·æ±‚ç¼–å·
+	//ÇëÇó±àºÅ
 	int reqId;
 
 	MSG_LIST *m_MsgList;

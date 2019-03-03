@@ -1,4 +1,4 @@
-#include "CCTPQuoter.h"
+ï»¿#include "CCTPQuoter.h"
 
 #ifdef _DEBUG
 #ifndef DBG_NEW
@@ -7,26 +7,26 @@
 #endif
 #endif
 
-///Inline utility function to convert result code into QString ## inlineº¯Êı½«CTP·µ»ØÖµ×ª»»ÎªQString
+///Inline utility function to convert result code into QString ## inlineå‡½æ•°å°†CTPè¿”å›å€¼è½¬æ¢ä¸ºQString
 inline QString resultString(int code) {
     // TODO: Change magic string into variable/external string
 
     QString sResult;
     switch (code) {
         case CCTPQuoter::SUCCESS_POST:
-            sResult = "µÇÂ½³É¹¦¡£\n";
+            sResult = "ç™»é™†æˆåŠŸã€‚\n";
             break;
         case CCTPQuoter::FAILED_NETWORK:
-            sResult = "µÇÂ½ÍøÂçÁ¬½ÓÊ§°Ü¡£\n";
+            sResult = "ç™»é™†ç½‘ç»œè¿æ¥å¤±è´¥ã€‚\n";
             break;
         case CCTPQuoter::FAILED_REACH_LIMITS:
-            sResult = "µÇÂ½Î´´¦ÀíÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+            sResult = "ç™»é™†æœªå¤„ç†è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
             break;
         case CCTPQuoter::FAILED_REACH_GRANTS:
-            sResult = "µÇÂ½Ã¿Ãë·¢ËÍÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+            sResult = "ç™»é™†æ¯ç§’å‘é€è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
             break;
         default:
-            sResult.append("Î´ÖªµÇÂ½Ê§°Ü ");
+            sResult.append("æœªçŸ¥ç™»é™†å¤±è´¥ ");
             sResult.append("CodeID:");
             sResult.append(code);
             sResult.append(" \n");
@@ -43,7 +43,7 @@ int CCTPQuoter::login() {
 	strcpy(loginField.Password, passwd.c_str());
 	strcpy(loginField.UserProductInfo, "ashu");
 
-	string sMsg("ÕıÔÚµÇÂ½ĞĞÇé·şÎñÆ÷¡£¡£¡£\n");
+	string sMsg("æ­£åœ¨ç™»é™†è¡Œæƒ…æœåŠ¡å™¨ã€‚ã€‚ã€‚\n");
 	genMsg(MSG_TYPE_LOGIN, sMsg);
 	string sMsg2("USER ID: ");
 	sMsg2.append(loginField.UserID);
@@ -58,19 +58,19 @@ int CCTPQuoter::login() {
 	int iResult = queryApi->ReqUserLogin(&loginField, ++reqId);
 	switch (iResult) {
 	case SUCCESS_POST:
-		sResult = "µÇÂ½ĞĞÇé·şÎñÆ÷³É¹¦¡£\n";
+		sResult = "ç™»é™†è¡Œæƒ…æœåŠ¡å™¨æˆåŠŸã€‚\n";
 		break;
 	case FAILED_NETWORK:
-		sResult = "µÇÂ½ĞĞÇé·şÎñÆ÷ÍøÂçÁ¬½ÓÊ§°Ü¡£\n";
+		sResult = "ç™»é™†è¡Œæƒ…æœåŠ¡å™¨ç½‘ç»œè¿æ¥å¤±è´¥ã€‚\n";
 		break;
 	case FAILED_REACH_LIMITS:
-		sResult = "µÇÂ½ĞĞÇé·şÎñÆ÷Î´´¦ÀíÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+		sResult = "ç™»é™†è¡Œæƒ…æœåŠ¡å™¨æœªå¤„ç†è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
 		break;
 	case FAILED_REACH_GRANTS:
-		sResult = "µÇÂ½ĞĞÇé·şÎñÆ÷Ã¿Ãë·¢ËÍÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+		sResult = "ç™»é™†è¡Œæƒ…æœåŠ¡å™¨æ¯ç§’å‘é€è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
 		break;
 	default:
-		sResult = "Î´ÖªĞĞÇé·şÎñÆ÷µÇÂ½Ê§°Ü¡£\n";
+		sResult = "æœªçŸ¥è¡Œæƒ…æœåŠ¡å™¨ç™»é™†å¤±è´¥ã€‚\n";
 		break;
 	}
 	genMsg(MSG_TYPE_LOGIN, sResult);
@@ -84,26 +84,26 @@ int CCTPQuoter::logout() {
 	strcpy(userLogout.BrokerID, brokerId.c_str());
 	strcpy(userLogout.UserID, userId.c_str());
 
-	string sMsg("ÕıÔÚ×¢Ïú¡£¡£¡£\n");
+	string sMsg("æ­£åœ¨æ³¨é”€ã€‚ã€‚ã€‚\n");
 	genMsg(MSG_TYPE_LOGIN, sMsg);
 
 	string sResult = { 0 };
 	int iResult = queryApi->ReqUserLogout(&userLogout, ++reqId);
 	switch (iResult) {
 	case SUCCESS_POST:
-		sResult = "×¢Ïú³É¹¦¡£\n";
+		sResult = "æ³¨é”€æˆåŠŸã€‚\n";
 		break;
 	case FAILED_NETWORK:
-		sResult = "×¢ÏúÍøÂçÁ¬½ÓÊ§°Ü¡£\n";
+		sResult = "æ³¨é”€ç½‘ç»œè¿æ¥å¤±è´¥ã€‚\n";
 		break;
 	case FAILED_REACH_LIMITS:
-		sResult = "×¢ÏúÎ´´¦ÀíÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+		sResult = "æ³¨é”€æœªå¤„ç†è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
 		break;
 	case FAILED_REACH_GRANTS:
-		sResult = "×¢ÏúÃ¿Ãë·¢ËÍÇëÇó³¬¹ıĞí¿ÉÊı¡£\n";
+		sResult = "æ³¨é”€æ¯ç§’å‘é€è¯·æ±‚è¶…è¿‡è®¸å¯æ•°ã€‚\n";
 		break;
 	default:
-		sResult = "Î´Öª×¢ÏúÊ§°Ü¡£\n";
+		sResult = "æœªçŸ¥æ³¨é”€å¤±è´¥ã€‚\n";
 		break;
 	}
 	genMsg(MSG_TYPE_LOGIN, sResult);
@@ -179,33 +179,33 @@ void CCTPQuoter::OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecif
 }
 
 
-///¶©ÔÄÑ¯¼ÛÓ¦´ğ
+///è®¢é˜…è¯¢ä»·åº”ç­”
 void CCTPQuoter::OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 };
 
-///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
+///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
 void CCTPQuoter::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
 
 };
 
-///Éî¶ÈĞĞÇéÍ¨Öª
+///æ·±åº¦è¡Œæƒ…é€šçŸ¥
 void CCTPQuoter::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
 	int test = 1;
 
 #if 0
 	if (pDepthMarketData) {
-		//std::cerr << "ºÏÔ¼´úÂë£º " << pDepthMarketData->ExchangeID << std::endl;
-		//std::cerr << "ÈÕÆÚ    £º " << pDepthMarketData->TradingDay << std::endl;
-		//std::cerr << "Ê±¼ä    £º " << pDepthMarketData->UpdateTime << std::endl;
-		//std::cerr << "ºÁÃë    £º " << pDepthMarketData->UpdateMillisec << std::endl;
-		//std::cerr << "¾ù¼Û    £º " << pDepthMarketData->AveragePrice << std::endl;
-		//std::cerr << "Âò¼Û1    £º " << pDepthMarketData->AskPrice1 << std::endl;
-		//std::cerr << "Âò¼Û2    £º " << pDepthMarketData->AskPrice2 << std::endl;
-		//std::cerr << "Âò¼Û3    £º " << pDepthMarketData->AskPrice3 << std::endl;
-		//std::cerr << "Âò¼Û4    £º " << pDepthMarketData->AskPrice4 << std::endl;
-		//std::cerr << "Âò¼Û5    £º " << pDepthMarketData->AskPrice5 << std::endl;
-		//std::cerr << "Âô¼Û1    £º " << pDepthMarketData->BidPrice1 << std::endl;
+		//std::cerr << "åˆçº¦ä»£ç ï¼š " << pDepthMarketData->ExchangeID << std::endl;
+		//std::cerr << "æ—¥æœŸ    ï¼š " << pDepthMarketData->TradingDay << std::endl;
+		//std::cerr << "æ—¶é—´    ï¼š " << pDepthMarketData->UpdateTime << std::endl;
+		//std::cerr << "æ¯«ç§’    ï¼š " << pDepthMarketData->UpdateMillisec << std::endl;
+		//std::cerr << "å‡ä»·    ï¼š " << pDepthMarketData->AveragePrice << std::endl;
+		//std::cerr << "ä¹°ä»·1    ï¼š " << pDepthMarketData->AskPrice1 << std::endl;
+		//std::cerr << "ä¹°ä»·2    ï¼š " << pDepthMarketData->AskPrice2 << std::endl;
+		//std::cerr << "ä¹°ä»·3    ï¼š " << pDepthMarketData->AskPrice3 << std::endl;
+		//std::cerr << "ä¹°ä»·4    ï¼š " << pDepthMarketData->AskPrice4 << std::endl;
+		//std::cerr << "ä¹°ä»·5    ï¼š " << pDepthMarketData->AskPrice5 << std::endl;
+		//std::cerr << "å–ä»·1    ï¼š " << pDepthMarketData->BidPrice1 << std::endl;
 
 		string temp = //g_Frame->getMonProduct1();
 		if (!strcmp(temp.c_str(), pDepthMarketData->InstrumentID)) {
@@ -253,7 +253,7 @@ void CCTPQuoter::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMark
 #endif
 }
 
-///Ñ¯¼ÛÍ¨Öª
+///è¯¢ä»·é€šçŸ¥
 void CCTPQuoter::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) {
 
 };

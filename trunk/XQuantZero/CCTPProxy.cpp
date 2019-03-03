@@ -1,4 +1,4 @@
-﻿#include "CCTPProxy.h"
+#include "CCTPProxy.h"
 
 int CCTPProxy::login(void) {
     return mTrader.login();
