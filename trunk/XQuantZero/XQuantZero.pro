@@ -42,6 +42,10 @@ SOURCES += \
     cevent.cpp \
     cctpevent.cpp \
     CCTPTrader.cpp \
+    CCTPQuoter.cpp \
+    ceventfactory.cpp \
+    cctpeventfactory.cpp \
+    cabstractevent.cpp \
     CCTPQuoter.cpp
 
 HEADERS += \
@@ -63,6 +67,11 @@ HEADERS += \
     CCTPTraderMD.h \
     CCTPTraderRsp.h \
     CCTPQuery.h \
+    CCTPQuoter.h \
+    ceventfactory.h \
+    cctpeventfactory.h \
+    cctpshared.h \
+    cabstractevent.h \
     CCTPQuoter.h
 
 FORMS += \
