@@ -9,6 +9,7 @@ To be continued...
 中文：
 XQuantZero 是基于QT的CTP自动交易客户端，他的主要目的是减少长期连续手工交易带来的压力和重复性工作 -.-
 
-下次再写。。。
+Site/Blog url:
+http://www.xquant.org/WPBlog/
 
 License: GPL v3
